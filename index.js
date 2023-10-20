@@ -4,8 +4,9 @@ const pageWrapper = document.createElement('div')
 pageWrapper.classList.add('page-wrapper')
 
 const greeting = document.createElement('div')
-greeting.textContent = 'Добро пожаловать на сервер!'
 greeting.classList.add('greeting')
+greeting.textContent = 'Добро пожаловать на сервер!'
+
 
 
 // авторизация
