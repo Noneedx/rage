@@ -3,26 +3,29 @@ import './style.css'
 const pageWrapper = document.createElement('div')
 pageWrapper.classList.add('page-wrapper')
 
-const greeting = document.createElement('div')
-greeting.classList.add('greeting')
-greeting.textContent = 'Добро пожаловать на сервер!'
-
-
 
 // авторизация
+
+const logo = document.createElement('img')
+logo.src = './img/server-logo.svg'
+logo.alt = 'server-logo'
+logo.classList.add('logo')
+pageWrapper.appendChild(logo)
+
+const authorizationTitle = document.createElement('span')
+authorizationTitle.textContent = 'Авторизация'
 
 const inputLogin = document.createElement('input');
 inputLogin.classList.add('input-login', 'input')
 inputLogin.type = 'text';
-inputLogin.placeholder = 'Введите ваш логин'
+inputLogin.placeholder = 'Введите логин'
 
 const inputPassword = document.createElement('input');
 inputPassword.classList.add('input-password', 'input')
 inputPassword.type = 'password'
-inputPassword.placeholder = 'Введите ваш пароль'
+inputPassword.placeholder = 'Введите пароль'
 
 document.body.append(pageWrapper)
-pageWrapper.appendChild(greeting)
 pageWrapper.appendChild(inputLogin)
 pageWrapper.appendChild(inputPassword)
 
@@ -61,7 +64,6 @@ registrationInput.type = 'text';
 registrationInput.placeholder = 'Придумайте ваш логин';
 
 const registrationText = document.createElement('div')
-registrationText.classList.add('greeting')
 registrationText.textContent = 'Регистрация'
 
 const registrationPassword = document.createElement('input');
@@ -118,7 +120,6 @@ registrationCheckButton.addEventListener('click', () => {
   console.log(json)
   console.log(data)
   // mp.trigger("login", json)
-  greeting.classList.remove('hidden')
   inputPassword.classList.remove('hidden')
   inputLogin.classList.remove('hidden')
   registrationButton.classList.remove('hidden')
@@ -134,7 +135,6 @@ registrationCheckButton.addEventListener('click', () => {
 registrationButton.addEventListener('click', () => {
   inputLogin.classList.add('hidden')
   inputPassword.classList.add('hidden')
-  greeting.classList.add('hidden')
   authorizationButton.classList.add('hidden')
   registrationButton.classList.add('hidden')
 
@@ -161,7 +161,6 @@ declineButton.addEventListener('click', () => {
   authorizationButton.classList.remove('hidden')
   inputLogin.classList.remove('hidden')
   inputPassword.classList.remove('hidden')
-  greeting.classList.remove('hidden')
 })
 
 let timer;
@@ -181,7 +180,6 @@ authorizationButton.addEventListener('click', () => {
     MainNotification.textContent = 'Введите пароль'
     return
   }
-  greeting.classList.remove('hidden')
   inputLogin.classList.remove('hidden')
   inputPassword.classList.remove('hidden')
   let data = {

@@ -1,16 +1,38 @@
+/* vw – 1% ширины окна
+vh – 1% высоты окна */
+
 @font-face {
-  font-family: "Barlow";
+  font-family: "Oswald";
+  font-style: medium;
+  font-weight: 500;
+  src: local ("Oswald-Medium"),
+  url("./fonts/Oswald-Medium.woff2") format("woff2"),
+  url("./fonts/Oswald-Medium.woff") format("woff"); 
+ }
+
+@font-face {
+  font-family: "Oswald";
+  font-style: light;
+  font-weight: 300;
+  src: local ("Oswald-Light"),
+  url("./fonts/Oswald-Light.woff2") format("woff2"),
+  url("./fonts/Oswald-Light.woff") format("woff"); 
+ }
+
+@font-face {
+  font-family: "Oswald";
   font-style: normal;
   font-weight: 400;
-  /* Браузер сначала попробует найти шрифт локально */
-  src: local("Barlow"),
-       /* Если не получилось, загрузит woff2 */
-       url("/fonts/Barlow-Medium.woff2") format("woff2"),
-       /* Если браузер не поддерживает woff2, загрузит woff */
-       url("/fonts/Barlow-Medium.woff") format("woff");
-}
+  src: local ("Oswald-Regular"),
+  url("./fonts/Oswald-Regular.woff2") format("woff2"),
+  url("./fonts/Oswald-Regular.woff") format("woff"); 
+ }
 
+ /* root */
 
+ /* :root {
+
+ } */
 
 body {
   position: relative;
@@ -18,8 +40,10 @@ body {
   height: 100vh;
   width: 100vw;
   box-sizing: border-box;
-  font-family: 'Barlow', sans-serif;
-  background-color: #487783;
+  font-family: 'Oswald', sans-serif;
+  background-image: url(./img/loading-background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .hidden {
@@ -27,25 +51,24 @@ body {
 }
 
 .page-wrapper {
-  background-color: #c6c6c6;
-  font-family: 'Barlow', sans-serif;
+  background: var(--background, radial-gradient(80.61% 70.81% at 50% 50%, rgba(114, 57, 187, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(61deg, rgba(0, 0, 0, 0.98) -0.05%, rgba(47, 47, 47, 0.98) 100.05%));
+  font-family: 'Oswald', sans-serif;
   font-weight: 500;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 35%;
-  height: 100%;
+  width: 46.2963vmin;
+  height: 100vh;
 }
 
-.greeting {
-  text-align: center;
-  font-size: 40px;
-  margin-bottom: 40px;
+.logo {
+  height: 106px;
+  width: 131px;
 }
 
 .input-login, .input-password {
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Oswald', sans-serif;
   text-align: center;
   border-radius: 11px;
   width: 65%;
@@ -80,7 +103,7 @@ body {
   color: #fff;
   border-radius: 11px;
   padding: 10px 25px;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -102,7 +125,7 @@ background: linear-gradient(0deg, rgba(0,3,255,1) 0%, rgba(2,126,251,1) 100%);
   color: white;
   pointer-events: none;
   position: absolute;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Oswald', sans-serif;
   bottom: 10%;
   left: 50%;
   padding-bottom: 10px;
