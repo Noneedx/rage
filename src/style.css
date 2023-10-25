@@ -1,0 +1,236 @@
+/* vw – 1% ширины окна
+vh – 1% высоты окна */
+
+@font-face {
+  font-family: "Oswald";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Oswald-Medium"),
+  url("./assets/fonts/Oswald-Medium.woff2") format("woff2"),
+  url("./assets/fonts/Oswald-Medium.woff") format("woff");
+ }
+
+@font-face {
+  font-family: "Oswald";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Oswald-Light"),
+  url("./assets/fonts/Oswald-Light.woff2") format("woff2"),
+  url("./assets/fonts/Oswald-Light.woff") format("woff");
+ }
+
+@font-face {
+  font-family: "Oswald";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Oswald-Regular"),
+  url("./assets/fonts/Oswald-Regular.woff2") format("woff2"),
+  url("./assets/fonts/Oswald-Regular.woff") format("woff");
+ }
+
+ /* root */
+
+:root {
+  --main-white-color: #FFFFFF;
+  --main-black-color: #121212;
+
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  font-family: 'Oswald', sans-serif;
+  background-image: url(assets/img/loading-background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hidden {
+  display: none;
+}
+
+.page-wrapper {
+  background: radial-gradient(80.61% 70.81% at 50% 50%, rgba(114, 57, 187, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(61deg, rgba(0, 0, 0, 0.98) -0.05%, rgba(47, 47, 47, 0.98) 100.05%);
+  font-weight: 500;
+  width: 46.2963vmin;
+  height: 100vh;
+  padding: 20px 100px;
+}
+
+.logo {
+  margin-top: 61px;
+  margin-bottom: 167.5px;
+  height: 106px;
+  width: 131px;
+}
+
+.authorization-title {
+  display: inline-block;
+  color: var(--main-white-color);
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+  text-align: left;
+  margin-bottom: 32px;
+}
+
+.input {
+  padding: 12px;
+  width: 100%;
+  opacity: 1;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+
+  background: rgba(0, 0, 0, 0.16);
+
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 130%;
+  color: var(--main-white-color);
+}
+
+.input::placeholder  {
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 130%;
+  opacity: 0.5;
+  color: var(--main-white-color);
+}
+
+.input:hover {
+  border: 1px solid rgba(255, 255, 255, 0.50);
+
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.input:focus {
+  border: 1px solid #FFF;
+}
+
+.input-login {
+  margin-bottom: 8px;
+}
+
+.input-password {
+  margin-bottom: 20px;
+}
+
+.input-password {
+  background: url("./assets/img/password-show-icon.svg") right no-repeat;
+}
+
+.password-checkbox {
+  margin-right: 10px;
+}
+
+/*checkbox*/
+
+.form-group {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.form-group input {
+  padding: 0;
+  height: initial;
+  width: initial;
+  margin-bottom: 0;
+  display: none;
+  cursor: pointer;
+}
+
+.form-group label {
+  position: relative;
+  cursor: pointer;
+  color: #FFF;
+  opacity: 0.8;
+  font-family: Oswald, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 130%; /* 20.8px */
+
+}
+
+.form-group label:before {
+  content:'';
+  -webkit-appearance: none;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(0, 0, 0, 0.16);
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.form-group input:checked + label:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 5px;
+  left: 9px;
+  width: 6px;
+  height: 14px;
+  border: solid #FFFFFF;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+
+
+.input-btn {
+
+}
+
+.input-btn:hover {
+}
+
+ /*уведомления в нижней части экрана*/
+
+.main-notification {
+
+}
+
+
+/*авторизация и регистрация*/
+
+.authorization-area {
+
+}
+
+.registration-button, .login-button, .decline-button, .registration-check-button {
+
+}
+

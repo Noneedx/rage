@@ -1,0 +1,44 @@
+.btn {
+    padding: 12px 24px;
+    width: 100%;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: Oswald, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 4px;
+
+}
+
+.primary-button {
+    padding: 12px 24px;
+    width: 100%;
+    color: #091335;
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    background: #FFF;
+}
+
+.primary-button:hover {
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: #ACACAC;
+}
+
+.login-button {
+    margin-bottom: 16px;
+}
+
+.secondary-button {
+    color: var(--main-white-color);
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.secondary-button:hover {
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.35);
+}

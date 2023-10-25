@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './index.js',
+    entry: './src/index.js',
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
@@ -15,7 +15,15 @@ module.exports = {
             test: /\.css$/i,
             use: ["style-loader", "css-loader"],
           },
-          { test: /\.svg$/, use: 'svg-inline-loader' },
+          { test: /\.svg$/, use: 'file-loader' },
+            {
+                test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+                type: 'asset/resource',
+            },
+            {
+                test: /\.(woff(2)?|eot|ttf|otf|)$/i,
+                type: 'asset/inline',
+            },
         ],
       },
       devServer: {
