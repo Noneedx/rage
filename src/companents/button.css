@@ -1,4 +1,11 @@
-.btn {
+
+
+/*1. сделать из буттонов в авторизациях дивы*/
+/*2. вынести*/
+
+
+
+.primary-button {
     padding: 12px 24px;
     width: 100%;
     text-transform: uppercase;
@@ -9,13 +16,7 @@
     font-weight: 500;
     line-height: normal;
     border-radius: 4px;
-
-}
-
-.primary-button {
-    padding: 12px 24px;
-    width: 100%;
-    color: #091335;
+    color: #121212;
 
     border: 1px solid rgba(255, 255, 255, 0.10);
 
