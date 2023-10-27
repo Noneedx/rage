@@ -11,10 +11,12 @@ document.body.append(pageWrapper)
 
 // авторизация
 
-const logo = document.createElement('img')
-logo.src = serverLogo
-logo.alt = 'server-logo'
+const logo = document.createElement('div')
+const logoText = document.createElement('div')
+logoText.textContent = 'CATCH RPG'
+logoText.classList.add('logo-text')
 logo.classList.add('logo')
+logo.append(logoText)
 pageWrapper.append(logo)
 
 // ОКНО АВТОРИЗАЦИИ!!!!
@@ -57,7 +59,7 @@ pageWrapper.append(authPasswordArea)
 
 // Запомнить меня
 const passwordCheckboxArea = document.createElement('div')
-passwordCheckboxArea.classList.add('form-group')
+passwordCheckboxArea.classList.add('auth-pass-checkbox')
 
 const passwordCheckbox = document.createElement('input')
 passwordCheckbox.classList.add('my-checkbox')
@@ -104,7 +106,8 @@ function onClickPasswordShow(input) {
 
 // ОКНО РЕГИСТРАЦИИ !!!!!!!!!!!!!!!!!!!!!!!!!
 
-const registrationTitle = document.createElement('span')
+const registrationTitle = document.createElement('div')
+registrationTitle.classList.add('authorization-title')
 registrationTitle.textContent = 'РЕГИСТРАЦИЯ'
 
 const registrationInputLogin = document.createElement('input')
@@ -114,11 +117,11 @@ registrationInputLogin.classList.add('input', 'input-login')
 // Введите пароль
 const registrationPasswordArea = document.createElement('div')
 registrationPasswordArea.id = 'input-password'
-registrationPasswordArea.classList.add('authorization-password-area')
+registrationPasswordArea.classList.add('registration-password-area')
 
 const registrationPasswordInput = document.createElement('input');
 registrationPasswordInput.placeholder = 'Введите пароль'
-registrationPasswordInput.classList.add('input-password', 'input')
+registrationPasswordInput.classList.add('input-password', 'input', 'reg-password')
 
 let regPassIcon = createPasswordShowIcon()
 registrationPasswordArea.append(registrationPasswordInput, regPassIcon)
@@ -126,7 +129,7 @@ registrationPasswordArea.append(registrationPasswordInput, regPassIcon)
 // повторите пароль
 const confirmRegistrationPasswordArea = document.createElement('div')
 confirmRegistrationPasswordArea.id = 'input-password'
-confirmRegistrationPasswordArea.classList.add('authorization-password-area')
+confirmRegistrationPasswordArea.classList.add('registration-password-area')
 
 regPassIcon.addEventListener('click', (e) => {
   onClickPasswordShow(registrationPasswordInput)
@@ -146,35 +149,46 @@ regPassConfirmIcon.addEventListener('click', (e) => {
 
 // электронная почта
 const regMailInput = document.createElement('input')
+regMailInput.classList.add('reg-mail-input')
 regMailInput.placeholder = 'Электронная почта'
 regMailInput.classList.add('input')
 
-// кнопки смены пола
-const regGenderButtons = document.createElement('div')
-regGenderButtons.classList.add('reg-gender-buttons')
+// свитчер смены пола
+const regGenderSwitcher = document.createElement('div')
+regGenderSwitcher.classList.add('reg-gender-switcher')
 
-const maleGenderButtonArea = document.createElement('div')
-maleGenderButtonArea.classList.add('gender-button-area')
-const maleGenderButton = document.createElement('button')
-maleGenderButton.classList.add('gender-button')
-const maleGenderIcon = document.createElement('img')
-maleGenderIcon.src = maleIcon
-maleGenderIcon.alt = 'male-icon'
+const maleGenderItem = document.createElement('div')
+maleGenderItem.classList.add('gender-item')
+const maleGenderText = document.createElement('div')
+maleGenderText.classList.add('gender-item-text')
+maleGenderText.textContent = 'МУЖЧИНА'
+const maleGenderIcon = document.createElement('div')
+maleGenderIcon.classList.add('male-gender-item-icon')
 
-maleGenderButtonArea.append(maleGenderButton, maleGenderIcon)
+maleGenderItem.append(maleGenderText, maleGenderIcon)
 
-const femaleGenderButtonArea = document.createElement('div')
-femaleGenderButtonArea.classList.add('gender-button-area')
-const femaleGenderButton = document.createElement('button')
-femaleGenderButton.classList.add('gender-button')
-const femaleGenderIcon = document.createElement('img')
-femaleGenderIcon.src = femaleIcon
-femaleGenderIcon.alt = 'female-icon'
+const femaleGenderItem = document.createElement('div')
+femaleGenderItem.classList.add('gender-item')
+const femaleGenderText = document.createElement('div')
+femaleGenderText.classList.add('gender-item-text')
+femaleGenderText.textContent = 'ЖЕНЩИНА'
+const femaleGenderIcon = document.createElement('div')
+femaleGenderIcon.classList.add('female-gender-item-icon')
 
-femaleGenderButtonArea.append(femaleGenderButton, femaleGenderIcon)
+regGenderSwitcher.append(maleGenderItem, femaleGenderItem)
+// создать аккаунт
 
+const createAccButton = document.createElement('button')
+createAccButton.classList.add('primary-button', 'btn', 'create-acc-btn')
+createAccButton.textContent = 'СОЗДАТЬ АККАУНТ'
+femaleGenderItem.append(femaleGenderText, femaleGenderIcon)
 
-regGenderButtons.append(maleGenderButtonArea, femaleGenderButtonArea)
+// у меня есть аккаунт
+
+const userHaveAccBtn = document.createElement('button')
+userHaveAccBtn.classList.add('user-haveacc-btn')
+userHaveAccBtn.textContent = 'У МЕНЯ ЕСТЬ АККАУНТ'
+
 
 
 
@@ -191,7 +205,9 @@ authTitle.classList.add('hidden')
   pageWrapper.append(registrationPasswordArea)
   pageWrapper.append(confirmRegistrationPasswordArea)
   pageWrapper.append(regMailInput)
-  pageWrapper.append(regGenderButtons)
+  pageWrapper.append(regGenderSwitcher)
+  pageWrapper.append(createAccButton)
+  pageWrapper.append(userHaveAccBtn)
 })
 
 

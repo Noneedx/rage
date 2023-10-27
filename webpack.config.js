@@ -15,13 +15,13 @@ module.exports = {
             test: /\.css$/i,
             use: ["style-loader", "css-loader"],
           },
-          { test: /\.svg$/, use: 'file-loader' },
+          // { test: /\.svg$/, use: 'file-loader' },
             {
                 test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
                 type: 'asset/resource',
             },
             {
-                test: /\.(woff(2)?|eot|ttf|otf|)$/i,
+                test: /\.(woff(2)?|eot|ttf|otf|svg)$/i,
                 type: 'asset/inline',
             },
         ],
