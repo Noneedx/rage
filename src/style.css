@@ -80,12 +80,25 @@ body {
   border: 0.09259vmin solid rgba(255, 255, 255, 0.20);
 }
 
-.logo {
+.logo-auth {
   display: flex;
   align-items: center;
   padding-left: 3.6185vmin;
   margin-top: 5.55555vmin;
   margin-bottom: 15.655vmin;
+  height: 9.8148vmin;
+  background-image: url("./assets/img/server-logo.svg");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: auto 100%;
+}
+
+.logo-reg {
+  display: flex;
+  align-items: center;
+  padding-left: 3.6185vmin;
+  margin-top: 5.55555vmin;
+  margin-bottom: 9.907407vmin;
   height: 9.8148vmin;
   background-image: url("./assets/img/server-logo.svg");
   background-repeat: no-repeat;
@@ -103,7 +116,7 @@ body {
 .authorization-title {
   color: var(--main-white-color);
   text-shadow: 0 0.37037vmin 0.37037vmin rgba(0, 0, 0, 0.25);
-  font-size: 2.9629vmin;
+  font-size: 2.9329vmin;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -114,7 +127,7 @@ body {
 
 .input {
   height: 4.62vmin;
-  padding: 1.34259vmin 1.1111vmin;
+  padding: 1.34259vmin 1.0111vmin;
   width: 27.77778vmin;
   opacity: 1;
   border-radius: 0.3703vmin;
@@ -123,11 +136,12 @@ body {
   background: rgba(0, 0, 0, 0.16);
 
   font-family: 'Oswald', sans-serif;
-  font-size: 1.4814vmin;
+  font-size: 1.6814vmin;
   font-style: normal;
   font-weight: 300;
   line-height: 1.944444vmin;
   color: var(--main-white-color);
+  transition: all 0.3s ease-in-out;
 }
 
 .input::placeholder  {
@@ -187,11 +201,12 @@ body {
 .password-control {
   cursor: pointer;
   position: absolute;
-  top: 1.0185vmin;
+  top: 1.2185vmin;
   right: 1.01851vmin;
   display: inline-block;
   width: 2.2222vmin;
   height: 2.2222vmin;
+  transition: all .3s ease-in-out;
 }
 
 .password-checkbox {
@@ -203,7 +218,7 @@ body {
 .auth-pass-checkbox {
   height: 20px;
   width: 100%;
-  margin-bottom: 1.38888vmin;
+  margin-bottom: 2.34888vmin;
 }
 
 .auth-pass-checkbox input {
@@ -243,6 +258,14 @@ body {
   vertical-align: middle;
   cursor: pointer;
   margin-right: 0.74074vmin;
+}
+
+.auth-pass-checkbox label:hover:before {
+  content: '';
+  background-image: url("./assets/img/check-icon-hovered.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 0.47777vmin;
 }
 
 .auth-pass-checkbox input:checked + label:after {
@@ -299,11 +322,13 @@ body {
 .gender-item {
   cursor: pointer;
   display: flex;
+  justify-content: center;
   width: calc(50% - 0.3703vmin);
   align-items: center;
-  padding: 1.111vmin;
+  padding: 1.2037vmin 2.02851vmin;
   border-radius: 0.3703vmin;
   border: 0.09259vmin solid rgba(255, 255, 255, 0.16);
+  transition: all .3s ease-in-out;
 }
 
 .gender-item:first-child {
@@ -317,6 +342,7 @@ body {
 .gender-item:focus {
   border: 0.09259vmin solid rgba(255, 255, 255, 0.16);
   background:  #FFF;
+  transition: all .3s ease-in-out;
 }
 
 .gender-item:focus .gender-item-text {
@@ -331,25 +357,28 @@ body {
   background-color: black;
 }
 
-.male-gender-item-icon {
+.gender-item-icon {
   width: 2.2222vmin;
   height: 2.2222vmin;
+  background-color: White;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  -webkit-mask-position: center center;
+}
+
+.male-gender-item-icon {
   -webkit-mask-image: url('./assets/img/maleIcon.svg');
   mask-image: url('./assets/img/maleIcon.svg');
-  background-color: White;
 }
 
 .female-gender-item-icon {
-  width: 2.2222vmin;
-  height: 2.2222vmin;
   -webkit-mask-image: url('./assets/img/femaleIcon.svg');
   mask-image: url('./assets/img/femaleIcon.svg');
-  background-color: White;
 }
 
 
 .gender-item-text {
-  margin-right: 0.7407vmin;
+  margin-right: 0.59555vmin;
   color: #FFF;
   font-family: Oswald, sans-serif;
   font-size: 1.48148vmin;
@@ -359,14 +388,17 @@ body {
 }
 
 .create-acc-btn {
-  margin-bottom: 1.85185vmin;
+  margin-bottom: 1.75185vmin;
 }
 
 .user-haveacc-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   border: none;
   width: 100%;
-  text-align: center;
   background-color: transparent;
   font-family: Oswald, sans-serif;
   color: #FFFFFF;
@@ -374,7 +406,20 @@ body {
   font-style: normal;
   font-weight: 500;
   line-height: 130%;
-  text-decoration-line: underline;
+  transition: all .3s ease-in-out;
+}
+
+.user-haveacc-btn:hover {
+  opacity: 0.6;
+}
+
+.user-haveacc-btn:after {
+  content: " ";
+  background: #FFFFFF;
+  width: 13.51851vmin;
+  height: 0.09259vmin;
+  top: 1.85185vmin;
+  position: absolute;
 }
 
 .hidden {

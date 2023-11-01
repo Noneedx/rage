@@ -3,7 +3,9 @@
 /*1. сделать из буттонов в авторизациях дивы*/
 /*2. вынести*/
 
-
+.btn {
+    transition: all .3s ease-in-out;
+}
 
 .primary-button {
     padding: 1.1111vmin 2.2222vmin;
