@@ -8,7 +8,13 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         clean: true,
     },
-    plugins: [new HtmlWebpackPlugin()],
+    plugins: [new HtmlWebpackPlugin(
+        {
+            title: 'webpack Boilerplate',
+            template: path.resolve(__dirname, './src/template.html'), // шаблон
+            filename: 'index.html', // название выходного файла
+        }
+    )],
     module: {
         rules: [
           {
