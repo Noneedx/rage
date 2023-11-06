@@ -1,8 +1,8 @@
 import './style.css'
-import './companents/buttons/button.css'
+import './components/buttons/button.css'
 import "./pages/auth/index.js"
-import './companents/progress_bar/index.js'
-
+import './components/progress_bar/index.js'
+import './components/notify/index.js'
 
 
 

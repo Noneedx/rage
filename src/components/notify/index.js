@@ -2,17 +2,10 @@
 // желтое - предупреждение
 // красное - ошибка
 // синее - подсказка
-import circleProgressBar from ''
+import {circleProgressBar} from '/src/components/progress_bar'
 
-
-const template = `<svg>\t<circle cy=12 cx=12 r=10 fill=transparent stroke="white" stroke-opacity=".1" stroke-width="2"></circle>
-\t<circle class="st0" cy=12 cx=-12 r=10 fill=transparent stroke="white" stroke-width="2" stroke-dasharray="100, 500" stroke-linecap="round" stroke-dashoffset=0></circle>
-</svg>
-`
-
-// сделать notify-pages страницу поверх всего некликабельной размером с весь экран
-// создать в ней элемент уведомления,
-// внутри элемента уведомления создавать элемент свг через js
+let mainNotify = document.querySelector('.notify-el')
+mainNotify.append(circleProgressBar)
 
 function createNotify(type,text,time = '5s') {
     let trueNotify = document.createElement('div')
