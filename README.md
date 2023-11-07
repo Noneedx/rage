@@ -8,3 +8,5 @@ npm run start
 npm run build
 ```
 
+showLoginPage 
+closeLoginPage

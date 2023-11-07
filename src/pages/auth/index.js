@@ -1,5 +1,5 @@
 import passwordShow from './../../assets/img/password-show-icon.svg'
-
+import './main.css'
 let pageWrapper
 
 let logo, logoText

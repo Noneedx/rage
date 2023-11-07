@@ -1,0 +1,76 @@
+.notify-page {
+    position: absolute;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 2.2222vmin;
+    height: 100vh;
+    width: 100vw;
+    pointer-events: none;
+}
+
+.notify-el {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 0.74074vmin 1.11111vmin 0.74074vmin 0.37037vmin;
+    margin-bottom: 0.74074vmin;
+    width: 30.0925vmin;
+    height: auto;
+
+
+    border-radius: 0.37037vmin;
+    background: rgba(18, 18, 18, 0.80);
+}
+/*background-color задавать в js от типа уведомления*/
+.notify-el--background {
+    position: absolute;
+    width: 6.01851vmin;
+    height: 6.01851vmin;
+    left: -3.70370vmin;
+
+    bottom: -1.29629vmin;
+    background-color: transparent;
+    opacity: 0.5;
+    filter: blur(1.48148vmin);
+}
+
+.notify-el--bar {
+    width: 0.27777vmin;
+    height: 2.31481vmin;
+    background-color: transparent;
+    border-radius: 0.23148vmin;
+}
+
+.notify-el--text {
+    margin: 0 1.48148vmin 0 1.48148vmin;
+
+    color:  #FFF;
+    font-family: Oswald, sans-serif;
+    font-size: 1.29629vmin;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 130%;
+}
+
+.true-notify {
+    background-color: #2DC245;
+}
+
+.warning-notify {
+    background-color: #BFC22D;;
+}
+
+.error-notify {
+    background-color: #C22D2D;;
+}
+
+.help-notify {
+    background-color: #3293ED;
+}
+
+
+

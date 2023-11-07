@@ -1,0 +1,43 @@
+.input {
+    height: 4.62vmin;
+    padding: 1.34259vmin 1.0111vmin;
+    width: 27.77778vmin;
+    opacity: 1;
+    border-radius: 0.3703vmin;
+    border: 0.09259vmin solid rgba(255, 255, 255, 0.16);
+
+    background: rgba(0, 0, 0, 0.16);
+
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.6814vmin;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.944444vmin;
+    color: var(--main-white-color);
+    transition: all 0.3s ease-in-out;
+}
+
+.input::placeholder  {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.4814vmin;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 130%;
+    opacity: 0.5;
+    color: var(--main-white-color);
+}
+
+.input-login {
+    margin-bottom: 0.7407vmin;
+}
+
+.input-login:hover {
+    border: 0.09259vmin solid rgba(255, 255, 255, 0.75);
+    background: rgba(0, 0, 0, 0.16);
+}
+
+.input-login:focus {
+    border: 0.09259vmin solid #FFF;
+    background: rgba(0, 0, 0, 0.16);
+    color: #FFFFFF;
+}
