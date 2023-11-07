@@ -6,7 +6,14 @@
   <!-- <link rel="stylesheet" href="style.css"> -->
   <title>catch</title>
 </head>
+<% if (htmlWebpackPlugin.options.templateParameters.production == true)  { %>
+<body style="background:#0000;">
+<% } else { %>
 <body>
+<% } %>
+<!--<body style="background:url(assets/img/loading-background.png);">-->
+
+
 <div class="dialog-page">
   <div class="dialog"></div>
 </div>
