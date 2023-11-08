@@ -16,14 +16,13 @@ const template = `<svg class="svg-progress" viewBox="0 0 100 100">
             transform: rotate(-90deg);
         }
         .progress-bar {
-            stroke-dasharray: 314;
-            stroke-dashoffset: 314;
+            stroke-dasharray: 251;
+            stroke-dashoffset: 251;
             transition: all linear;
         }
 
         .svg-progress {
-            /*position: absolute;*/
-            /*right: 5px;*/
+            position: absolute;
             height: 100%;
             width: 100%;
 \t          background-color: transparent;

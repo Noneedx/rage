@@ -75,6 +75,7 @@ body {
 }
 
 .default-page {
+  position: absolute;
   display: flex;
   align-items: center;
   flex-direction: column;

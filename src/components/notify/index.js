@@ -48,6 +48,7 @@ function createNotify(type,text = 'Уведомление',time = 5) {
 
     function deleteNotify() {
         notify.remove()
+        notifyQueue.pop()
         notifyCounter-=1
     }
     notify.deleteTimeout = setTimeout(deleteNotify, 1000 * time)
@@ -72,3 +73,7 @@ function createNotify(type,text = 'Уведомление',time = 5) {
 
 window.createNotify = createNotify
 window.activateProgressBar = activateProgressBar
+
+mp.events.add('notify:show', (type,text,time) => {
+    createNotify(type,text,time)
+})

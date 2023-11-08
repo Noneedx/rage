@@ -283,6 +283,10 @@ function closeLoginPage () {
 
 window.closeLoginPage = closeLoginPage
 
+mp.events.add('auth:show', () => {
+    showLoginPage()
+})
+
 // регулярка для проверки логина
 const loginRegex = /[0-9a-zA-Z$^\-_]{4,24}/
 // регулярка для проверки пароля

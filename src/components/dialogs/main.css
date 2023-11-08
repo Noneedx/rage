@@ -1,7 +1,7 @@
 .dialog {
     display: flex;
     flex-direction: column;
-    width: 400px;
+    max-width: 400px;
     height: auto;
     padding: 20px;
     gap: 20px;
@@ -22,7 +22,7 @@
     cursor: pointer;
 }
 
-.dialog-header--text {
+.dialog-header--title {
     color: #FFF;
 
     font-family: Oswald, sans-serif;
@@ -91,4 +91,41 @@
 
 .dialog input {
     width: 100%;
+}
+
+.dialog-table {
+    background: rgba(255, 255, 255, 0.10);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-collapse: collapse;
+}
+
+.dialog-table--title, .dialog-table--text {
+    color: #FFF;
+    font-family: Oswald, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    text-align: center;
+}
+
+.dialog-table--title {
+    padding: 10px;
+    font-size: 12px;
+    line-height: 120%; /* 14.4px */
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.dialog-table--text {
+    padding: 1px;
+    border: 1px solid transparent;
+    font-size: 14px;
+    line-height: 130%; /* 18.2px */
+}
+
+.dialog-table--title:first-child {
+    border-radius: 8px 0px 0px 0px;
+}
+
+.dialog-table--title:last-child {
+    border-radius: 0px 8px 0px 0px;
 }
