@@ -1,40 +1,45 @@
-const template = `<svg>
+const template = `<svg class="svg-progress" viewBox="0 0 100 100">
 \t<style>
+        .circle-progress-bar {
+            min-width: 2.148148vmin;
+            min-height: 2.148148vmin;
+            max-width: 2.148148vmin;
+            max-height: 2.148148vmin;
+            width: 2.148148vmin;
+            height: 2.148148vmin;
+            
+            position: absolute;
+            right: 1.1111vmin;
+        }
+        
         .progress-bar{
             transform: rotate(-90deg);
         }
         .progress-bar {
-            stroke-dasharray: 62.8;
-            stroke-dashoffset: 62.8;
+            stroke-dasharray: 314;
+            stroke-dashoffset: 314;
             transition: all linear;
         }
 
-        svg {
-            position: absolute;
-            right: 5px;
-            height: 25px;
-            width: 25px;
+        .svg-progress {
+            /*position: absolute;*/
+            /*right: 5px;*/
+            height: 100%;
+            width: 100%;
 \t          background-color: transparent;
         }
 
+
 \t</style>
-\t<circle cy=12 cx=12 r=10 fill=transparent stroke="white" stroke-opacity=".1" stroke-width="2"></circle>
-\t<circle class="progress-bar" cy=12 cx=-12 r=10 fill=transparent stroke="white" stroke-opacity="1" stroke-width="2" stroke-dasharray="100, 500" stroke-linecap="round" stroke-dashoffset=0></circle>
+\t<circle cy=50 cx=50 r=40 fill=transparent stroke="white" stroke-opacity=".1" stroke-width="10"></circle>
+\t<circle class="progress-bar" cy=50 cx=-50 r=40 fill=transparent stroke="white" stroke-opacity="1" stroke-width="10" stroke-dasharray="100, 500" stroke-linecap="round" stroke-dashoffset=0></circle>
 </svg>
 `
 
 function createProgressBar() {
-    let circleProgressBar = document.createElement('svg')
+    let circleProgressBar = document.createElement('div')
     circleProgressBar.classList.add('circle-progress-bar')
-
-    let circleStatic = document.createElement('circle')
-    circleStatic.classList.add('circle-static')
-    circleStatic.innerHTML = template
-
-    let circleActive = document.createElement('circle')
-    circleActive.classList.add('circle-active')
-
-    circleProgressBar.append(circleStatic)
+    circleProgressBar.innerHTML = template
 
     return circleProgressBar
 }
