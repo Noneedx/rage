@@ -1,0 +1,94 @@
+.dialog {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: auto;
+    padding: 20px;
+    gap: 20px;
+
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background: radial-gradient(80.61% 70.81% at 50% 50%, rgba(114, 57, 187, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(61deg, rgba(0, 0, 0, 0.98) -0.05%, rgba(47, 47, 47, 0.98) 100.05%);
+}
+
+.dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dialog-header--closer {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.dialog-header--text {
+    color: #FFF;
+
+    font-family: Oswald, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+}
+
+.dialog-text {
+    overflow-x: hidden;
+    overflow-y: auto;
+    color: rgba(255, 255, 255, 0.75);
+
+    font-family: Oswald, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 140%;
+}
+
+.dialog-text::-webkit-scrollbar {
+    width: 4px;
+}
+
+.dialog-text::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 20px;
+}
+
+.dialog-buttons {
+    display: flex;
+}
+
+.dialog-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog-button--active {
+    margin-right: 8px;
+}
+
+.dialog-button-enter::after {
+    content: url("../../assets/img/dialog-enter-icon.svg");
+    height: 25px;
+    width: auto;
+    margin-left: 8px;
+}
+
+.dialog-button-enter:hover::after {
+    opacity: 0.9;
+}
+
+.dialog-button--closer::after {
+    content: url("../../assets/img/dialog-esc-icon.svg");
+    height: 25px;
+    width: auto;
+    margin-left: 8px;
+}
+
+.dialog-button--closer:hover::after {
+    opacity: 0.9;
+}
+
+.dialog input {
+    width: 100%;
+}

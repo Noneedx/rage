@@ -1,5 +1,6 @@
 import passwordShow from './../../assets/img/password-show-icon.svg'
 import './main.css'
+
 let pageWrapper
 
 let logo, logoText
@@ -95,8 +96,6 @@ function showLoginPage () {
     authPasswordInput.placeholder = 'Введите пароль'
 
     // иконка глазика
-
-
 
     let authPasswordShow = createPasswordShowIcon()
 
@@ -220,6 +219,7 @@ function showLoginPage () {
         registrationButton)
 
     registrationButton.addEventListener('click', onClickRegistrationButton)
+    userHaveAccBtn.addEventListener('click',onClickUserHaveAccBtn)
 }
 
 function onClickRegistrationButton () {
@@ -232,6 +232,16 @@ function onClickRegistrationButton () {
     logo.classList.remove('logo-auth')
     logo.classList.add('logo-reg')
 
+    registrationTitle.classList.remove('hidden')
+    registrationInputLogin.classList.remove('hidden')
+    registrationPasswordArea.classList.remove('hidden')
+    confirmRegistrationPasswordArea.classList.remove('hidden')
+    regMailInput.classList.remove('hidden')
+    regGenderSwitcher.classList.remove('hidden')
+    regGenderSwitcher.style.display = 'flex'
+    createAccButton.classList.remove('hidden')
+    userHaveAccBtn.classList.remove('hidden')
+
     pageWrapper.append(registrationTitle)
     pageWrapper.append(registrationInputLogin)
     pageWrapper.append(registrationPasswordArea)
@@ -242,15 +252,33 @@ function onClickRegistrationButton () {
     pageWrapper.append(userHaveAccBtn)
 }
 
-window.showLoginPage = showLoginPage
+function onClickUserHaveAccBtn () {
+    registrationTitle.classList.add('hidden')
+    registrationInputLogin.classList.add('hidden')
+    registrationPasswordArea.classList.add('hidden')
+    confirmRegistrationPasswordArea.classList.add('hidden')
+    regMailInput.classList.add('hidden')
+    regGenderSwitcher.classList.add('hidden')
+    regGenderSwitcher.style.display = 'none'
+    createAccButton.classList.add('hidden')
+    userHaveAccBtn.classList.add('hidden')
 
-// вынести авторизацию в отдельную страницу-блок,
-// при вызове функции closeLoginPage удалять этот блок и все ивент-листенеры
+    authTitle.classList.remove('hidden')
+    authLoginInput.classList.remove('hidden')
+    authPasswordArea.classList.remove('hidden')
+    passwordCheckboxArea.classList.remove('hidden')
+    registrationButton.classList.remove('hidden')
+    authButton.classList.remove('hidden')
+    logo.classList.add('logo-auth')
+    logo.classList.remove('logo-reg')
+    userHaveAccBtn.remove()
+}
+
+window.showLoginPage = showLoginPage
 
 function closeLoginPage () {
     pageWrapper.remove()
     registrationButton.removeEventListener('click', onClickRegistrationButton)
-
 }
 
 window.closeLoginPage = closeLoginPage

@@ -11,11 +11,24 @@
 <% } else { %>
 <body>
 <% } %>
-<!--<body style="background:url(assets/img/loading-background.png);">-->
 
 
-<div class="dialog-page">
-  <div class="dialog"></div>
+<div class="dialog-page default-page">
+  <div class="dialog">
+    <div class="dialog-header">
+      <span class="dialog-header--text">ИНФОРМАЦИОННОЕ ДИАЛОГОВОЕ ОКНО</span>
+      <img alt="closer" class="dialog-header--closer" id="dialogCloserIcon">
+    </div>
+    <div class="dialog-subtitle"></div>
+    <div class="dialog-body">
+      <div class="dialog-text">Игровой проект представляет собой увлекательный квест с элементами RPG.</div>
+    </div>
+      <input placeholder="Инпут" type="text" class="input hidden">
+    <div class="dialog-buttons">
+      <button class="dialog-button dialog-button--active primary-button dialog-button-enter">КНОПКА 1</button>
+      <button class="dialog-button dialog-button--closer secondary-button">КНОПКА 2</button>
+    </div>
+  </div>
 </div>
   <script src="index.js"></script>
 </body>
