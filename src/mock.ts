@@ -1,15 +1,18 @@
+window.mp = window.mp || {};
+
+
 if(window.mp == null) {
     window.mp = {
         events: {
-            call(name, ...args) {;
+            call(name:string, ...args:any[]) {;
                 this.list[name](...args)
             },
-            add(name, callback) {
+            add(name:string, callback: Function) {
                 this.list[name] = callback
             },
             list: {},
         },
-        trigger(name, ...args) {
+        trigger(name:string, ...args:any[]) {
             console.log(`${name} ${args}`)
         }
     };

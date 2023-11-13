@@ -43,8 +43,8 @@ function createProgressBar() {
     return circleProgressBar
 }
 
-function activateProgressBar(circleProgressBar,time) {
-    let circle = circleProgressBar.getElementsByClassName('progress-bar')[0]
+function activateProgressBar(circleProgressBar:HTMLElement,time:number) {
+    let circle: HTMLElement = circleProgressBar.getElementsByClassName('progress-bar')[0] as HTMLElement
     circle.style.strokeDashoffset = '0';
     circle.style.transitionDuration = `${time}s`
 }

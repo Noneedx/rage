@@ -1,55 +1,55 @@
 import passwordShow from './../../assets/img/password-show-icon.svg'
 import './main.css'
 
-let pageWrapper
+let pageWrapper:HTMLElement | undefined
 
-let logo, logoText
+let logo:HTMLElement | undefined, logoText:HTMLElement | undefined
 
-let authTitle
+let authTitle:HTMLElement | undefined
 
-let authLoginInput
+let authLoginInput:HTMLInputElement | undefined
 
-let authPasswordInput
+let authPasswordInput:HTMLInputElement | undefined
 
-let authPasswordArea
+let authPasswordArea:HTMLElement | undefined
 
-let passwordCheckboxArea
+let passwordCheckboxArea:HTMLElement | undefined
 
-let passwordCheckbox
+let passwordCheckbox:HTMLInputElement | undefined
 
-let passwordCheckboxText
+let passwordCheckboxText:HTMLLabelElement | undefined
 
-let authButton
+let authButton:HTMLElement | undefined
 
-let registrationButton
+let registrationButton:HTMLElement
 
-let registrationTitle
+let registrationTitle:HTMLElement | undefined
 
-let registrationInputLogin
+let registrationInputLogin:HTMLInputElement | undefined
 
-let registrationPasswordArea
+let registrationPasswordArea:HTMLElement | undefined
 
-let registrationPasswordInput
+let registrationPasswordInput:HTMLInputElement | undefined
 
-let regPassIcon
+let regPassIcon:HTMLElement | undefined
 
-let confirmRegistrationPasswordArea
+let confirmRegistrationPasswordArea:HTMLElement | undefined
 
-let confirmRegistrationPasswordInput
+let confirmRegistrationPasswordInput:HTMLInputElement | undefined
 
-let regPassConfirmIcon
+let regPassConfirmIcon:HTMLElement | undefined
 
-let regMailInput
+let regMailInput:HTMLInputElement | undefined
 
-let regGenderSwitcher
+let regGenderSwitcher:HTMLElement | undefined
 
-let maleGenderItem, maleGenderText, maleGenderIcon
+let maleGenderItem:HTMLElement | undefined, maleGenderText:HTMLElement | undefined, maleGenderIcon:HTMLElement | undefined
 
-let femaleGenderItem, femaleGenderText, femaleGenderIcon
+let femaleGenderItem:HTMLElement | undefined, femaleGenderText:HTMLElement | undefined, femaleGenderIcon:HTMLElement | undefined
 
-let createAccButton
+let createAccButton:HTMLElement | undefined
 
-let userHaveAccBtn
+let userHaveAccBtn:HTMLElement | undefined
 
 function createPasswordShowIcon() {
     const passwordShowIcon = document.createElement('img')
@@ -59,7 +59,7 @@ function createPasswordShowIcon() {
     return passwordShowIcon
 }
 
-function onClickPasswordShow(input) {
+function onClickPasswordShow(input:HTMLInputElement) {
     if (input.type === 'password') {
         input.type = 'text'
     } else {
@@ -68,7 +68,7 @@ function onClickPasswordShow(input) {
     return false;
 }
 
-function showLoginPage () {
+function showLoginPage() {
     pageWrapper = document.createElement('div')
     pageWrapper.classList.add('page-wrapper')
     document.body.append(pageWrapper)
@@ -165,7 +165,7 @@ function showLoginPage () {
     confirmRegistrationPasswordInput.classList.add('input-password', 'input')
 
     regPassConfirmIcon = createPasswordShowIcon()
-    confirmRegistrationPasswordArea.append(confirmRegistrationPasswordInput,regPassConfirmIcon )
+    confirmRegistrationPasswordArea.append(confirmRegistrationPasswordInput, regPassConfirmIcon)
 
     regPassConfirmIcon.addEventListener('click', () => {
         onClickPasswordShow(confirmRegistrationPasswordInput)
@@ -185,7 +185,7 @@ function showLoginPage () {
     maleGenderText.classList.add('gender-item-text')
     maleGenderText.textContent = 'МУЖЧИНА'
     maleGenderIcon = document.createElement('div')
-    maleGenderIcon.classList.add('male-gender-item-icon', 'gender-item-icon' )
+    maleGenderIcon.classList.add('male-gender-item-icon', 'gender-item-icon')
 
     maleGenderItem.append(maleGenderText, maleGenderIcon)
 
@@ -195,7 +195,7 @@ function showLoginPage () {
     femaleGenderText.classList.add('gender-item-text')
     femaleGenderText.textContent = 'ЖЕНЩИНА'
     femaleGenderIcon = document.createElement('div')
-    femaleGenderIcon.classList.add('female-gender-item-icon', 'gender-item-icon' )
+    femaleGenderIcon.classList.add('female-gender-item-icon', 'gender-item-icon')
 
     regGenderSwitcher.append(maleGenderItem, femaleGenderItem)
 
@@ -219,10 +219,10 @@ function showLoginPage () {
         registrationButton)
 
     registrationButton.addEventListener('click', onClickRegistrationButton)
-    userHaveAccBtn.addEventListener('click',onClickUserHaveAccBtn)
+    userHaveAccBtn.addEventListener('click', onClickUserHaveAccBtn)
 }
 
-function onClickRegistrationButton () {
+function onClickRegistrationButton() {
     authTitle.classList.add('hidden')
     authLoginInput.classList.add('hidden')
     authPasswordArea.classList.add('hidden')
@@ -252,7 +252,7 @@ function onClickRegistrationButton () {
     pageWrapper.append(userHaveAccBtn)
 }
 
-function onClickUserHaveAccBtn () {
+function onClickUserHaveAccBtn() {
     registrationTitle.classList.add('hidden')
     registrationInputLogin.classList.add('hidden')
     registrationPasswordArea.classList.add('hidden')
@@ -274,18 +274,18 @@ function onClickUserHaveAccBtn () {
     userHaveAccBtn.remove()
 }
 
-window.showLoginPage = showLoginPage
+window.showLoginPage = window.showLoginPage || {}
 
-function closeLoginPage () {
+function closeLoginPage() {
     pageWrapper.remove()
     registrationButton.removeEventListener('click', onClickRegistrationButton)
 }
 
-window.closeLoginPage = closeLoginPage
+window.closeLoginPage = window.closeLoginPage || {}
 
-mp.events.add('auth:show', () => {
-    showLoginPage()
-})
+// mp.events.add('auth:show', () => {
+//     showLoginPage()
+// })
 
 // регулярка для проверки логина
 const loginRegex = /[0-9a-zA-Z$^\-_]{4,24}/

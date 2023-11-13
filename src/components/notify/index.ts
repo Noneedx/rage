@@ -9,29 +9,42 @@ let notifyPage = document.createElement('div')
 notifyPage.classList.add('notify-page')
 document.body.append(notifyPage)
 let notifyCounter = 0;
-let notifyQueue = [];
-const notifyTypes = {
-    0: 'true-notify',
-    1: 'warning-notify',
-    2: 'error-notify',
-    3: 'help-notify',
+let notifyQueue:Array<notifyEl> = [];
+
+interface INotifyIndex {
+    [key: string]: string;
 }
 
-function createNotify(type,text = 'Уведомление',time = 5) {
+
+
+const notifyTypes:INotifyIndex = {
+    "0": 'true-notify',
+    "1": 'warning-notify',
+    "2": 'error-notify',
+    "3": 'help-notify',
+}
+
+
+interface notifyEl extends HTMLDivElement{
+    deleteTimeout:number,
+    activateTimeout:number,
+}
+
+function createNotify(type:number,text = 'Уведомление',time = 5) {
 
     if (notifyCounter === 4) {
-        let deletedNotify = notifyQueue.shift()
+        let deletedNotify:notifyEl = notifyQueue.shift()
        clearTimeout(deletedNotify.deleteTimeout)
        clearTimeout(deletedNotify.activateTimeout)
         deletedNotify.remove()
     } else notifyCounter+=1
 
-    let notifyClass = notifyTypes[type]
+    let notifyClass:string = notifyTypes[type]
 
-    let notify = document.createElement('div')
+    let notify:notifyEl = document.createElement('div') as notifyEl
     notify.classList.add('notify-el')
 
-    let notifyBackground = document.createElement('div')
+    let notifyBackground = document.createElement("div")
     notifyBackground.classList.add(notifyClass, 'notify-el--background')
 
     let notifyBar = document.createElement('div')
@@ -74,6 +87,6 @@ function createNotify(type,text = 'Уведомление',time = 5) {
 window.createNotify = createNotify
 window.activateProgressBar = activateProgressBar
 
-mp.events.add('notify:show', (type,text,time) => {
-    createNotify(type,text,time)
-})
+// mp.events.add('notify:show', (type:number,text:string,time:number) => {
+//     createNotify(type,text,time)
+// })

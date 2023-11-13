@@ -3,11 +3,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = function (env, argv) {
     return {
-        entry: './src/index.js',
+        entry: './src/index.ts',
         output: {
             filename: 'bundle.js',
             path: path.resolve(__dirname, 'dist'),
             clean: true,
+        },
+        resolve: {
+            extensions: ['.tsx', '.ts', '.js'],
         },
         plugins: [new HtmlWebpackPlugin(
             {
@@ -34,6 +37,11 @@ module.exports = function (env, argv) {
                 {
                     test: /\.(woff(2)?|eot|ttf|otf|svg)$/i,
                     type: 'asset/inline',
+                },
+                {
+                    test: /\.tsx?$/,
+                    use: 'ts-loader',
+                    exclude: /node_modules/,
                 },
             ],
         },

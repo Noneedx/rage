@@ -24,6 +24,8 @@
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.3",
     "svg-chunk-webpack-plugin": "^5.0.0",
-    "svg-inline-loader": "^0.8.2"
+    "svg-inline-loader": "^0.8.2",
+    "ts-loader": "^9.5.0",
+    "typescript": "^5.2.2"
   }
 }
