@@ -1,13 +1,13 @@
 .dialog {
     display: flex;
     flex-direction: column;
-    max-width: 400px;
+    max-width: 37.03703vmin;
     height: auto;
-    padding: 20px;
-    gap: 20px;
+    padding: 1.85185vmin;
+    gap: 1.85185vmin;
 
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.20);
+    border-radius: 0.92592vmin;
+    border: 0.09259vmin solid rgba(255, 255, 255, 0.20);
     background: radial-gradient(80.61% 70.81% at 50% 50%, rgba(114, 57, 187, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(61deg, rgba(0, 0, 0, 0.98) -0.05%, rgba(47, 47, 47, 0.98) 100.05%);
 }
 
@@ -20,13 +20,15 @@
 .dialog-header--closer {
     opacity: 0.5;
     cursor: pointer;
+    height: 1.94444vmin;
+    width: auto;
 }
 
 .dialog-header--title {
     color: #FFF;
 
     font-family: Oswald, sans-serif;
-    font-size: 18px;
+    font-size: 1.66666vmin;
     font-style: normal;
     font-weight: 500;
     line-height: 130%;
@@ -38,19 +40,20 @@
     color: rgba(255, 255, 255, 0.75);
 
     font-family: Oswald, sans-serif;
-    font-size: 16px;
+    font-size: 1.48148vmin;
     font-style: normal;
     font-weight: 300;
     line-height: 140%;
+    max-height: 26.48148vmin;
 }
 
 .dialog-text::-webkit-scrollbar {
-    width: 4px;
+    width: 0.37037vmin;
 }
 
 .dialog-text::-webkit-scrollbar-thumb {
     background-color: white;
-    border-radius: 20px;
+    border-radius: 1.85185vmin;
 }
 
 .dialog-buttons {
@@ -64,25 +67,29 @@
 }
 
 .dialog-button--active {
-    margin-right: 8px;
+    margin-right: 0.74074vmin;
 }
 
-.dialog-button-enter::after {
-    content: url("../../assets/img/dialog-enter-icon.svg");
-    height: 25px;
-    width: auto;
-    margin-left: 8px;
+.dialog-button--text {
+    font-family: Oswald, sans-serif;
+    font-size: 1.48148vmin;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.92592vmin;
 }
 
-.dialog-button-enter:hover::after {
+.dialog-button-enter--icon, .dialog-button-esc--icon {
+    min-width: 2.77777vmin;
+    min-height: 2.314814vmin;
+    max-width: 2.77777vmin;
+    max-height: 2.314814vmin;
+    width: 2.77777vmin;
+    height: 2.314814vmin;
+    margin-left: 0.74074vmin;
+}
+
+.dialog-button--enter:hover::after {
     opacity: 0.9;
-}
-
-.dialog-button--closer::after {
-    content: url("../../assets/img/dialog-esc-icon.svg");
-    height: 25px;
-    width: auto;
-    margin-left: 8px;
 }
 
 .dialog-button--closer:hover::after {
@@ -94,17 +101,11 @@
 }
 
 .dialog-table {
-    border-collapse: collapse;
-    border-radius: 8px;
+    border-spacing: 0;
+    border-bottom: 0.370370vmin solid rgba(255, 255, 255, 0.10);
+    border-radius: 0.74074vmin;
     overflow-y: scroll;
     overflow-x: hidden;
-}
-
-.dialog-table tbody {
-    border-top: 0;
-    border-right: 1px solid rgba(255, 255, 255, 0.10);
-    border-bottom: 4px solid rgba(255, 255, 255, 0.10);
-    border-left: 1px solid rgba(255, 255, 255, 0.10);
 }
 
 .dialog-table--title, .dialog-table--text {
@@ -116,23 +117,31 @@
 }
 
 .dialog-table--title {
-    padding: 10px;
-    font-size: 12px;
-    line-height: 120%; /* 14.4px */
+    padding: 0.92592vmin;
+    font-size: 1.11111vmin;
+    line-height: 1.333333vmin;
     background: rgba(255, 255, 255, 0.10);
 }
 
 .dialog-table--text {
-    padding: 8px 34px;
-    border: 1px solid rgba(255, 255, 255, 0.10);
-    font-size: 14px;
+    padding: 0.74074vmin 3.148148vmin;
+    border: 0.09259vmin solid rgba(255, 255, 255, 0.10);
+    font-size: 1.29629vmin;
     line-height: 130%; /* 18.2px */
 }
 
 .dialog-table--title:first-child {
-    border-radius: 8px 0px 0px 0px;
+    border-radius: 0.74074vmin 0 0 0;
 }
 
 .dialog-table--title:last-child {
-    border-radius: 0px 8px 0px 0px;
+    border-radius: 0 0.74074vmin 0 0;
+}
+
+tr:last-child td:last-child {
+    border-bottom-right-radius: 0.46296vmin;
+}
+
+tr:last-child td:nth-last-child(2) {
+    border-bottom-left-radius: 0.555555vmin;
 }

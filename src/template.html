@@ -19,7 +19,6 @@
       <span class="dialog-header--title"></span>
       <img alt="closer" class="dialog-header--closer" id="dialogCloserIcon">
     </div>
-    <div class="dialog-subtitle"></div>
       <div class="dialog-text">Игровой проект представляет собой увлекательный квест с элементами RPG.</div>
       <table class="dialog-table">
         <thead>
@@ -47,10 +46,16 @@
         </tr>
         </tbody>
       </table>
-      <input placeholder="Инпут" type="text" class="input hidden">
+      <input placeholder="Инпут" type="text" class="input dialog-input hidden">
     <div class="dialog-buttons">
-      <button class="dialog-button dialog-button--active primary-button dialog-button-enter">КНОПКА 1</button>
-      <button class="dialog-button dialog-button--closer secondary-button">КНОПКА 2</button>
+      <button class="dialog-button dialog-button--active primary-button dialog-button--enter">
+        <span class="dialog-button--text dialog-button--active-text"></span>
+        <img alt="enter" class="dialog-button-enter--icon">
+      </button>
+      <button class="dialog-button dialog-button--closer secondary-button">
+        <span class="dialog-button--text dialog-button--closer-text"></span>
+        <img alt="closer" class="dialog-button-esc--icon">
+      </button>
     </div>
   </div>
 </div>
