@@ -1,6 +1,3 @@
-window.mp = window.mp || {};
-
-
 if(window.mp == null) {
     window.mp = {
         events: {
@@ -16,16 +13,18 @@ if(window.mp == null) {
             console.log(`${name} ${args}`)
         }
     };
+} else {
+    window.mp = window.mp;
 }
 //
 //
 //
 // Регистрируем событие
-// mp.events.add('test', (...args) => {
-//     const div = document.createElement("div")
-//     div.innerHTML = JSON.stringify([...args])
-//     document.body.append(div)
-// })
+window.mp.events.add('test', (...args: any[]) => {
+    const div = document.createElement("div")
+    div.innerHTML = JSON.stringify([...args])
+    document.body.append(div)
+})
 //
 // Проверяем событие, что оно работает так как мы ожидаем
 // mp.events.call('test', 1, 2, 3)
