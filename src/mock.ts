@@ -1,7 +1,7 @@
 if(window.mp == null) {
     window.mp = {
         events: {
-            call(name:string, ...args:any[]) {;
+            call(name:string, ...args:any[]) {
                 this.list[name](...args)
             },
             add(name:string, callback: Function) {
