@@ -1,7 +1,6 @@
 .dialog {
     display: flex;
     flex-direction: column;
-    max-width: 37.03703vmin;
     height: auto;
     padding: 1.85185vmin;
     gap: 1.85185vmin;
@@ -35,6 +34,7 @@
 }
 
 .dialog-text {
+    width: 0;
     overflow-x: hidden;
     overflow-y: auto;
     color: rgba(255, 255, 255, 0.75);
@@ -151,7 +151,7 @@ tr:last-child td:last-child {
     border-bottom-right-radius: 0.46296vmin;
 }
 
-tr:last-child td:nth-last-child(2) {
+tr:last-child td:first-child {
     border-bottom-left-radius: 0.555555vmin;
 }
 
@@ -161,4 +161,8 @@ tr:last-child td:nth-last-child(2) {
 
 .dialog-second-tableTd {
     border-top-right-radius: 0.555555vmin;
+}
+
+#dialog-tbody tr {
+
 }

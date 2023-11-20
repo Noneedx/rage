@@ -24,14 +24,14 @@ interface IDialogData {
 }
 
 const dataTest1:IDialogData = {
-    type: 2,
+    type: 3,
     title: 'ИНФОРМАЦИОННОЕ ДИАЛОГОВОЕ ОКНО',
     text: 'Игровой проект представляет собой увлекательный квест с элементами RPG, где игроки могут путешествовать по разнообразным мирам, выполнять задания, сражаться с монстрами и развивать своего персонажа. В игре реализована уникальная система прокачки умений и навыков, позволяющая каждому игроку создать своего уникального героя. Игровой проект - это захватывающий экшн с элементами РПГ и стратегии, где игроку предстоит строить свою базу, создавать армию, исследовать технологии и сражаться с другими игроками за ресурсы и власть. Уникальный геймплей, современная графика и захватывающий сюжет не дадут вам скучать, а возможность играть с друзьями и объединяться в кланы сделает ваше прохождение еще интереснее.Игровой проект представляет собой увлекательный квест с элементами RPG, где игроки могут путешествовать по разнообразным мирам, выполнять задания, сражаться с монстрами и развивать своего персонажа. В игре реализована уникальная система прокачки умений и навыков, позволяющая каждому игроку создать своего уникального героя. Игровой проект - это захватывающий экшн с элементами РПГ и стратегии, где игроку предстоит строить свою базу, создавать армию, исследовать технологии и сражаться с другими игроками за ресурсы и власть. Уникальный геймплей, современная графика и захватывающий сюжет не дадут вам скучать, а возможность играть с друзьями и объединяться в кланы сделает ваше прохождение еще интереснее.Игровой проект представляет собой увлекательный квест с элементами RPG, где игроки могут путешествовать по разнообразным мирам, выполнять задания, сражаться с монстрами и развивать своего персонажа. В игре реализована уникальная система прокачки умений и навыков, позволяющая каждому игроку создать своего уникального героя. Игровой проект - это захватывающий экшн с элементами РПГ и стратегии, где игроку предстоит строить свою базу, создавать армию, исследовать технологии и сражаться с другими игроками за ресурсы и власть. Уникальный геймплей, современная графика и захватывающий сюжет не дадут вам скучать, а возможность играть с друзьями и объединяться в кланы сделает ваше прохождение еще интереснее.',
-    columns: ['Название машины', 'Максимальная Скорость', 'Цена'],
+    columns: ['Название машины', 'Максимальная Скорость', 'Цена', 'Цена', 'Максимальная Скорость'],
     rows: [
-        ['bullet', 300, '250$'],
-        ['mark', 350, '300$'],
-        ['bmw', 250, '400$'],
+        ['bullet', 300, '250$', '250$', 300],
+        ['mark', 350, '300$', '250$', 300],
+        ['bmw', 250, '400$', '250$', 300],
     ],
     buttons: ['КНОПКА 1', 'КНОПКА 2']
 }
@@ -46,8 +46,7 @@ function createDialog (data:IDialogData) {
     let dialogText = document.getElementsByClassName('dialog-text')
     dialogText[0].textContent = data.text
 
-    let dialogTable = document.getElementsByClassName('dialog-table')
-
+    let dialogTable = document.getElementById('dialog-table') as HTMLTableElement
     let dialogInput = document.getElementsByClassName('dialog-input')
 
     let dialogButtonEnterText = document.getElementsByClassName('dialog-button--active-text')
@@ -66,31 +65,10 @@ function createDialog (data:IDialogData) {
 
     let dialogThead:HTMLElement = document.getElementById('dialog-table-thead') as HTMLElement
 
-    let dialogTableRows = dialogTable[0].querySelectorAll('tr')
+    let dialogTbody:HTMLTableElement = document.getElementById('dialog-tbody') as HTMLTableElement
 
-    let firstTableRow = dialogTableRows[1].querySelectorAll('td')
-
-    let firstTableTd = firstTableRow[0]
-    let secondTableTd = firstTableRow[firstTableRow.length-1]
-    console.log(secondTableTd)
-
-    if (data.type === 0) {
-        dialogTable[0].classList.add('hidden')
-        dialogInput[0].classList.add('hidden')
-    }
-
-    if (data.type === 1) {
-        dialogTable[0].classList.add('hidden')
-        dialogInput[0].classList.remove('hidden')
-    }
-
-    if (data.type === 2) {
-        dialogInput[0].classList.add('hidden')
-        dialogTable[0].classList.remove('hidden', 'dialog-table--withoutThead')
-        firstTableTd.classList.remove('dialog-first-tableTd')
-        secondTableTd.classList.remove('dialog-second-tableTd')
+    function createTableRows(data:IDialogData, tbody:HTMLTableElement) {
         for (let row of data.rows) {
-            console.log(row)
             let tableTr = document.createElement('tr')
 
             for (let i = 0; typeof row !== "number" && i < row?.length; i++){
@@ -100,29 +78,68 @@ function createDialog (data:IDialogData) {
 
                 tableTr.append(tableTd)
             }
-            console.log(tableTr)
+            dialogTbody.append(tableTr)
         }
+        return dialogTbody
+    }
+
+    if (data.type === 0) {
+        dialogTable.classList.add('hidden')
+        dialogInput[0].classList.add('hidden')
+    }
+
+    if (data.type === 1) {
+        dialogTable.classList.add('hidden')
+        dialogInput[0].classList.remove('hidden')
+    }
+
+    if (data.type === 2) {
+        dialogInput[0].classList.add('hidden')
+        dialogTable.classList.remove('hidden', 'dialog-table--withoutThead')
+        dialogTable.classList.add('dialog-table')
+        let dialogTheadColumns = document.createElement('tr')
+        for (let column of data.columns) {
+            let dialogTheadColumn = document.createElement('th')
+            dialogTheadColumn.classList.add('dialog-table--title')
+            dialogTheadColumn.textContent = column
+            dialogTheadColumns.append(dialogTheadColumn)
+        }
+        dialogThead.append(dialogTheadColumns)
+
+        createTableRows(dataTest1, dialogTbody)
+
+        console.log(dialogTable.getBoundingClientRect().width)
+
+        dialogText[0].setAttribute('style',`width:${dialogTable.getBoundingClientRect().width}px`)
     }
 
     if (data.type === 3) {
-        const el = dialogTable[0]
         dialogInput[0].classList.add('hidden')
-        el.classList.remove('hidden', 'dialog-table')
-        el.classList.add('dialog-table--withoutThead')
-
+        dialogTable.classList.add('dialog-table--withoutThead')
+        dialogTable.classList.remove('hidden', 'dialog-table')
         dialogThead.classList.add('hidden')
 
+
+        createTableRows(dataTest1, dialogTbody)
+
+        console.log(dialogTable.getBoundingClientRect().width)
+
+        let dialogTableWidth = dialogTable.getBoundingClientRect().width
+
+        dialogText[0].setAttribute('style',`width:${dialogTableWidth}px`)
+
+        let firstTableTd = document.querySelector("#dialog-tbody tr:first-child td:first-child")
+        let lastTableTd = document.querySelector("#dialog-tbody tr:first-child td:last-child")
+        console.log(lastTableTd)
+
         firstTableTd.classList.add('dialog-first-tableTd')
-        secondTableTd.classList.add('dialog-second-tableTd')
+        lastTableTd.classList.add('dialog-second-tableTd')
     }
 
 }
-
 
 window.createDialog = window.createDialog || {};
 createDialog(dataTest1)
 // const data = [{
 //     'Имя': 'Геннадий',
 // },{},{}]
-
-
