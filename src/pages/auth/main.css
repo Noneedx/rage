@@ -224,21 +224,21 @@
     border: 0.09259vmin solid rgba(255, 255, 255, 0.50);
 }
 
-.gender-item:focus {
+.gender-active {
     border: 0.09259vmin solid rgba(255, 255, 255, 0.16);
     background:  #FFF;
     transition: all .3s ease-in-out;
 }
 
-.gender-item:focus .gender-item-text {
+.gender-active .gender-item-text {
     color: #121212;
 }
 
-.gender-item:focus .male-gender-item-icon {
+.gender-active .male-gender-item-icon {
     background-color: black;
 }
 
-.gender-item:focus .female-gender-item-icon {
+.gender-active .female-gender-item-icon {
     background-color: black;
 }
 

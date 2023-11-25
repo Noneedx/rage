@@ -30,7 +30,7 @@ interface notifyEl extends HTMLDivElement{
     activateTimeout:number,
 }
 
-function createNotify(type:number,text = 'Уведомление',time = 5) {
+export function createNotify(type:number,text = 'Уведомление',time = 5) {
 
     if (notifyCounter === 4) {
         let deletedNotify:notifyEl = notifyQueue.shift()

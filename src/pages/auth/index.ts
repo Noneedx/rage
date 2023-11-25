@@ -1,5 +1,6 @@
 import passwordShow from './../../assets/img/password-show-icon.svg'
 import './main.css'
+import {createNotify} from "../../components/notify";
 
 let pageWrapper:HTMLElement | undefined
 
@@ -50,6 +51,10 @@ let femaleGenderItem:HTMLElement | undefined, femaleGenderText:HTMLElement | und
 let createAccButton:HTMLElement | undefined
 
 let userHaveAccBtn:HTMLElement | undefined
+
+let genderStatus:boolean | undefined = null
+
+let sexValue: boolean;
 
 function createPasswordShowIcon() {
     const passwordShowIcon = document.createElement('img')
@@ -187,6 +192,14 @@ function showLoginPage() {
     maleGenderIcon = document.createElement('div')
     maleGenderIcon.classList.add('male-gender-item-icon', 'gender-item-icon')
 
+    maleGenderItem.addEventListener('click', () => {
+        maleGenderItem.classList.add('gender-active')
+        femaleGenderItem.classList.remove('gender-active')
+        // maleGenderItem.classList.remove('gender-item')
+        genderStatus = true;
+        sexValue = true
+    })
+
     maleGenderItem.append(maleGenderText, maleGenderIcon)
 
     femaleGenderItem = document.createElement('div')
@@ -196,6 +209,14 @@ function showLoginPage() {
     femaleGenderText.textContent = 'ЖЕНЩИНА'
     femaleGenderIcon = document.createElement('div')
     femaleGenderIcon.classList.add('female-gender-item-icon', 'gender-item-icon')
+
+    femaleGenderItem.addEventListener('click', () => {
+        femaleGenderItem.classList.add('gender-active')
+        maleGenderItem.classList.remove('gender-active')
+        // maleGenderItem.classList.remove('gender-item')
+        genderStatus = true;
+        sexValue = false
+    })
 
     regGenderSwitcher.append(maleGenderItem, femaleGenderItem)
 
@@ -220,6 +241,51 @@ function showLoginPage() {
 
     registrationButton.addEventListener('click', onClickRegistrationButton)
     userHaveAccBtn.addEventListener('click', onClickUserHaveAccBtn)
+
+    // регулярка для проверки логина
+    const loginRegex = /[0-9a-zA-Z$^\-_]{4,24}/
+    // регулярка для проверки пароля
+    const passwordRegex = /[0-9a-zA-Z!@#$%^&*\-_]{6,36}/
+
+    const emailRegex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
+    // function () {
+    //
+    // }
+
+    createAccButton.addEventListener('click', () => {
+        let RegUserLogin = registrationInputLogin.value
+        let RegUserPassword = registrationPasswordInput.value
+        let RegConfirmUserPassword = confirmRegistrationPasswordInput.value
+        let RegEmail = regMailInput.value
+        if (!RegUserLogin || loginRegex.test(RegUserLogin) === false) {
+            createNotify(2, 'Заполните корректно логин',5)
+            registrationInputLogin.value = ''
+            return
+        }
+        if (!RegUserPassword || passwordRegex.test(RegUserPassword) === false) {
+            createNotify(2, 'Заполните корректно пароль',5)
+            registrationPasswordInput.value = ''
+            return
+        }
+        if (RegUserPassword != RegConfirmUserPassword) {
+            createNotify(2, 'Пароли не совпадают',5)
+            return;
+        }
+        if (!RegEmail || emailRegex.test(RegEmail) === false) {
+            createNotify(2, 'Заполните корректно почту',5)
+            return;
+        }
+        if (genderStatus === null) {
+            createNotify(2, 'Выберите пол',5)
+            return;
+        }
+        window.mp.trigger('auth::reg',JSON.stringify({
+            login: RegUserLogin,
+            password: RegUserPassword,
+            email: RegEmail,
+            sex: sexValue,
+        }))
+    })
 }
 
 function onClickRegistrationButton() {
@@ -283,59 +349,19 @@ function closeLoginPage() {
 
 window.closeLoginPage = window.closeLoginPage || {}
 
-mp.events.add('auth::show', () => {
+window.mp.events.add('auth::show', () => {
     showLoginPage()
 })
 
-// регулярка для проверки логина
-const loginRegex = /[0-9a-zA-Z$^\-_]{4,24}/
-// регулярка для проверки пароля
-const passwordRegex = /[0-9a-zA-Z!@#$%^&*\-_]{6,36}/
+window.mp.events.add('auth::hide', () => {
+    closeLoginPage()
+})
 
 // доделать регулярку https://u-next.com/blogs/java/what-is-password-validation-in-javascript-beginners-guide/
 // добавить регулярку чтобы работало и на авторизацию
 // менять MainNotification в зависимости, что не так с логином или паролем
 
-// registrationCheckButton.addEventListener('click', () => {
-//   let UserLogin = registrationInput.value
-//   let UserPassword = registrationPassword.value
-//   console.log(loginRegex.test(UserLogin))
-//   console.log(passwordRegex.test(UserPassword))
-//   if (!UserLogin || loginRegex.test(UserLogin) === false) {
-//     clearTimeout(timer)
-//     timer = setTimeout(clearMainNotification, 3000)
-//     MainNotification.classList.remove('hidden')
-//     MainNotification.textContent = 'Введите логин'
-//     registrationInput.value = ''
-//     return
-//   }
-//   if (!UserPassword || passwordRegex.test(UserPassword) === false) {
-//     clearTimeout(timer)
-//     timer = setTimeout(clearMainNotification, 3000)
-//     MainNotification.classList.remove('hidden')
-//     MainNotification.textContent = 'Введите пароль'
-//     registrationPassword.value = ''
-//     return
-//   }
-//   let data = {
-//     login: UserLogin,
-//     password: UserPassword,
-//   }
-//   const json = JSON.stringify(data)
-//   console.log(json)
-//   console.log(data)
-//   // mp.trigger("login", json)
-//   inputPassword.classList.remove('hidden')
-//   inputLogin.classList.remove('hidden')
-//   registrationButton.classList.remove('hidden')
-//   authorizationButton.classList.remove('hidden')
-//
-//   declineButton.classList.add('hidden')
-//   registrationCheckButton.classList.add('hidden')
-//   registrationText.classList.add('hidden')
-//   registrationInput.classList.add('hidden')
-//   registrationPassword.classList.add('hidden')
-// })
+
 //
 // registrationButton.addEventListener('click', () => {
 //   inputLogin.classList.add('hidden')
