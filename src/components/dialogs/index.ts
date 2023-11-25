@@ -40,6 +40,8 @@ let dialogCloserIcon:HTMLImageElement = document.getElementById('dialogCloserIco
 dialogCloserIcon.src = dialogCloser
 
 function createDialog (data:IDialogData) {
+    let dialogPage = document.getElementById('dialog-page')
+    dialogPage.classList.remove('hidden')
     let dialogTitle = document.getElementsByClassName('dialog-header--title')
     dialogTitle[0].textContent = data.title
 
@@ -108,8 +110,6 @@ function createDialog (data:IDialogData) {
 
         createTableRows(dataTest1, dialogTbody)
 
-        console.log(dialogTable.getBoundingClientRect().width)
-
         dialogText[0].setAttribute('style',`width:${dialogTable.getBoundingClientRect().width}px`)
     }
 
@@ -122,15 +122,12 @@ function createDialog (data:IDialogData) {
 
         createTableRows(dataTest1, dialogTbody)
 
-        console.log(dialogTable.getBoundingClientRect().width)
-
         let dialogTableWidth = dialogTable.getBoundingClientRect().width
 
         dialogText[0].setAttribute('style',`width:${dialogTableWidth}px`)
 
         let firstTableTd = document.querySelector("#dialog-tbody tr:first-child td:first-child")
         let lastTableTd = document.querySelector("#dialog-tbody tr:first-child td:last-child")
-        console.log(lastTableTd)
 
         firstTableTd.classList.add('dialog-first-tableTd')
         lastTableTd.classList.add('dialog-second-tableTd')
@@ -139,7 +136,7 @@ function createDialog (data:IDialogData) {
 }
 
 window.createDialog = window.createDialog || {};
-// createDialog(dataTest1)
+createDialog(dataTest1)
 // const data = [{
 //     'Имя': 'Геннадий',
 // },{},{}]
