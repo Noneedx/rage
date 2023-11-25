@@ -126,6 +126,27 @@ function showLoginPage() {
     authButton.textContent = 'Войти'
     authButton.classList.add('login-button', 'primary-button', 'btn')
 
+    function onClickAuthButton() {
+        let authUserLogin = authLoginInput.value
+        let authUserPassword = authPasswordInput.value
+        if (!authUserLogin || loginRegex.test(authUserLogin) === false) {
+            createNotify(2, 'Заполните корректно логин',5)
+            registrationInputLogin.value = ''
+            return
+        }
+        if (!authUserPassword || passwordRegex.test(authUserPassword) === false) {
+            createNotify(2, 'Заполните корректно пароль',5)
+            registrationPasswordInput.value = ''
+            return
+        }
+        window.mp.trigger('auth::input',JSON.stringify({
+            login: authUserLogin,
+            password: authUserPassword,
+        }))
+    }
+
+    authButton.addEventListener('click', onClickAuthButton)
+
     registrationButton = document.createElement('button')
     registrationButton.textContent = 'Регистрация'
     registrationButton.classList.add('registration-button', 'btn', 'secondary-button')
@@ -248,11 +269,7 @@ function showLoginPage() {
     const passwordRegex = /[0-9a-zA-Z!@#$%^&*\-_]{6,36}/
 
     const emailRegex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
-    // function () {
-    //
-    // }
-
-    createAccButton.addEventListener('click', () => {
+    function onClickCreateAccButton() {
         let RegUserLogin = registrationInputLogin.value
         let RegUserPassword = registrationPasswordInput.value
         let RegConfirmUserPassword = confirmRegistrationPasswordInput.value
@@ -285,7 +302,9 @@ function showLoginPage() {
             email: RegEmail,
             sex: sexValue,
         }))
-    })
+    }
+
+    createAccButton.addEventListener('click', onClickCreateAccButton)
 }
 
 function onClickRegistrationButton() {
@@ -359,66 +378,3 @@ window.mp.events.add('auth::hide', () => {
 
 // доделать регулярку https://u-next.com/blogs/java/what-is-password-validation-in-javascript-beginners-guide/
 // добавить регулярку чтобы работало и на авторизацию
-// менять MainNotification в зависимости, что не так с логином или паролем
-
-
-//
-// registrationButton.addEventListener('click', () => {
-//   inputLogin.classList.add('hidden')
-//   inputPassword.classList.add('hidden')
-//   authorizationButton.classList.add('hidden')
-//   registrationButton.classList.add('hidden')
-//
-//   declineButton.classList.remove('hidden')
-//   registrationInput.classList.remove('hidden')
-//   registrationText.classList.remove('hidden')
-//   registrationPassword.classList.remove('hidden')
-//   registrationCheckButton.classList.remove('hidden')
-//
-//
-//   pageWrapper.prepend(registrationPassword)
-//   pageWrapper.prepend(registrationInput)
-//   pageWrapper.prepend(registrationText)
-// })
-//
-// declineButton.addEventListener('click', () => {
-//   registrationInput.classList.add('hidden')
-//   registrationPassword.classList.add('hidden')
-//   registrationText.classList.add('hidden')
-//   declineButton.classList.add('hidden')
-//   registrationCheckButton.classList.add('hidden')
-//
-//   registrationButton.classList.remove('hidden')
-//   authorizationButton.classList.remove('hidden')
-//   inputLogin.classList.remove('hidden')
-//   inputPassword.classList.remove('hidden')
-// })
-//
-// let timer;
-//
-// authorizationButton.addEventListener('click', () => {
-//   if (!inputLogin.value) {
-//     clearTimeout(timer)
-//     timer = setTimeout(clearMainNotification, 3000)
-//     MainNotification.classList.remove('hidden')
-//     MainNotification.textContent = 'Введите логин'
-//     return
-//   }
-//   if (!inputPassword.value) {
-//     clearTimeout(timer)
-//     timer = setTimeout(clearMainNotification, 3000)
-//     MainNotification.classList.remove('hidden')
-//     MainNotification.textContent = 'Введите пароль'
-//     return
-//   }
-//   inputLogin.classList.remove('hidden')
-//   inputPassword.classList.remove('hidden')
-//   let data = {
-//     login: inputLogin.value,
-//     password: inputPassword.value,
-//   }
-//   const json = JSON.stringify(data)
-//   console.log(json)
-//   console.log(data)
-//   // mp.trigger("login", json)
-// })
