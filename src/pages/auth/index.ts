@@ -129,13 +129,13 @@ function showLoginPage() {
     function onClickAuthButton() {
         let authUserLogin = authLoginInput.value
         let authUserPassword = authPasswordInput.value
-        if (!authUserLogin || loginRegex.test(authUserLogin) === false) {
-            createNotify(2, 'Заполните корректно логин',5)
+        if (!authUserLogin) {
+            createNotify(2, 'Заполните логин',5)
             registrationInputLogin.value = ''
             return
         }
-        if (!authUserPassword || passwordRegex.test(authUserPassword) === false) {
-            createNotify(2, 'Заполните корректно пароль',5)
+        if (!authUserPassword) {
+            createNotify(2, 'Заполните пароль',5)
             registrationPasswordInput.value = ''
             return
         }
