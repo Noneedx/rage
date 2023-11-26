@@ -36,6 +36,9 @@ const dataTest1:IDialogData = {
     buttons: ['КНОПКА 1', 'КНОПКА 2']
 }
 
+let tableTrNumber:number
+let activatedTableTr:HTMLElement | undefined
+
 let dialogCloserIcon:HTMLImageElement = document.getElementById('dialogCloserIcon') as HTMLImageElement
 dialogCloserIcon.src = dialogCloser
 
@@ -70,9 +73,10 @@ function createDialog (data:IDialogData) {
     let dialogTbody:HTMLTableElement = document.getElementById('dialog-tbody') as HTMLTableElement
 
     function createTableRows(data:IDialogData, tbody:HTMLTableElement) {
-        for (let row of data.rows) {
+        for (let i = 0; i < data.rows.length; i++) {
+            let row = data.rows[i]
             let tableTr = document.createElement('tr')
-
+            tableTr.setAttribute('number', i.toString())
             for (let i = 0; typeof row !== "number" && i < row?.length; i++){
                 let tableTd = document.createElement('td')
                 tableTd.classList.add('dialog-table--text')
@@ -80,6 +84,25 @@ function createDialog (data:IDialogData) {
 
                 tableTr.append(tableTd)
             }
+            tableTr.addEventListener('click', ()=>{
+                if (activatedTableTr != undefined){
+                    activatedTableTr.style.backgroundColor = 'transparent'
+                    const tdList = activatedTableTr.children
+                    for (let i = 0; i < tdList.length; i++) {
+                        let tdListHtmlElement = tdList[i] as HTMLElement
+                        tdListHtmlElement.style.color = 'white'
+                    }
+                }
+                activatedTableTr = tableTr
+                tableTrNumber = Number(tableTr.getAttribute('number'))
+
+                tableTr.style.backgroundColor = 'white'
+                const tdList = tableTr.children
+                for (let i = 0; i < tdList.length; i++) {
+                    let tdListHtmlElement = tdList[i] as HTMLElement
+                    tdListHtmlElement.style.color = 'black'
+                }
+            })
             dialogTbody.append(tableTr)
         }
         return dialogTbody
@@ -136,7 +159,7 @@ function createDialog (data:IDialogData) {
 }
 
 window.createDialog = window.createDialog || {};
-// createDialog(dataTest1)
+createDialog(dataTest1)
 // const data = [{
 //     'Имя': 'Геннадий',
 // },{},{}]

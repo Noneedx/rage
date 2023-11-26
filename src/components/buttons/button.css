@@ -4,10 +4,12 @@
 /*2. вынести*/
 
 .btn {
+    user-select: none;
     transition: all .3s ease-in-out;
 }
 
 .primary-button {
+    user-select: none;
     padding: 1.1111vmin 2.2222vmin;
     width: 100%;
     text-transform: uppercase;
@@ -31,10 +33,12 @@
 }
 
 .login-button {
+    user-select: none;
     margin-bottom: 1.48148vmin;
 }
 
 .secondary-button {
+    user-select: none;
     padding: 1.1111vmin 2.2222vmin;
     width: 100%;
     color: var(--main-white-color);
