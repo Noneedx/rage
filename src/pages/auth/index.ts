@@ -73,7 +73,7 @@ function onClickPasswordShow(input:HTMLInputElement) {
     return false;
 }
 
-function showLoginPage() {
+function showLoginPage(remember:boolean) {
     pageWrapper = document.createElement('div')
     pageWrapper.classList.add('page-wrapper')
     document.body.append(pageWrapper)
@@ -119,6 +119,10 @@ function showLoginPage() {
     passwordCheckboxText = document.createElement('label')
     passwordCheckboxText.htmlFor = 'checkbox'
     passwordCheckboxText.textContent = 'Запомнить меня'
+
+    if (remember) {
+        passwordCheckbox.checked = true
+    }
 
     passwordCheckboxArea.append(passwordCheckbox, passwordCheckboxText)
 
@@ -369,8 +373,8 @@ function closeLoginPage() {
 
 window.closeLoginPage = window.closeLoginPage || {}
 
-window.mp.events.add('auth::show', () => {
-    showLoginPage()
+window.mp.events.add('auth::show', (remember:boolean) => {
+    showLoginPage(remember)
 })
 
 window.mp.events.add('auth::hide', () => {
