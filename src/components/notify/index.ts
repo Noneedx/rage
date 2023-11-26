@@ -15,8 +15,6 @@ interface INotifyIndex {
     [key: string]: string;
 }
 
-
-
 const notifyTypes:INotifyIndex = {
     "0": 'true-notify',
     "1": 'warning-notify',
@@ -77,6 +75,6 @@ export function createNotify(type:number,text = 'Уведомление',time = 
 window.createNotify = createNotify
 window.activateProgressBar = activateProgressBar
 
-// mp.events.add('notify:show', (type:number,text:string,time:number) => {
-//     createNotify(type,text,time)
-// })
+window.mp.events.add('notify::push', (type:number,text:string,time:number) => {
+    createNotify(type,text,time)
+})

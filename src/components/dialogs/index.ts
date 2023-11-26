@@ -1,5 +1,4 @@
 import './main.css'
-import dialogCloser from '../../assets/img/dialog-closer.svg'
 import dialogBtnEnterIcon from '../../assets/img/dialog-enter-icon.svg'
 import dialogBtnEscIcon from '../../assets/img/dialog-esc-icon.svg'
 
@@ -39,9 +38,6 @@ const dataTest1:IDialogData = {
 let tableTrNumber:number
 let activatedTableTr:HTMLElement | undefined
 
-let dialogCloserIcon:HTMLImageElement = document.getElementById('dialogCloserIcon') as HTMLImageElement
-dialogCloserIcon.src = dialogCloser
-
 function createDialog (data:IDialogData) {
     let dialogPage = document.getElementById('dialog-page')
     dialogPage.classList.remove('hidden')
@@ -53,6 +49,13 @@ function createDialog (data:IDialogData) {
 
     let dialogTable = document.getElementById('dialog-table') as HTMLTableElement
     let dialogInput = document.getElementsByClassName('dialog-input')
+
+    let dialogButtonEsc = document.getElementById('dialog-button--closer')
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape'){
+            alert('ТЫ ПИДАРАС!!!')
+        }
+    })
 
     let dialogButtonEnterText = document.getElementsByClassName('dialog-button--active-text')
     dialogButtonEnterText[0].textContent = data.buttons[0]

@@ -22,7 +22,7 @@ window.mp.events.add('socket::init', (ip:string,hash:string) => {
     console.log(ip,hash)
     const socket = io(ip);
     socket.emit('socket', hash)
-    socket.on('socket::push', (type:number,text:string,time:number) => {
+    socket.on('notify::push', (type:number,text:string,time:number) => {
         createNotify(type,text,time)
     })
 })
