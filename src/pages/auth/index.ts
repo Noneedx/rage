@@ -142,6 +142,7 @@ function showLoginPage() {
         window.mp.trigger('auth::input',JSON.stringify({
             login: authUserLogin,
             password: authUserPassword,
+            remember: passwordCheckbox.checked,
         }))
     }
 
