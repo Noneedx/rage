@@ -162,7 +162,3 @@ function createDialog (data:IDialogData) {
 }
 
 window.createDialog = window.createDialog || {};
-createDialog(dataTest1)
-// const data = [{
-//     'Имя': 'Геннадий',
-// },{},{}]
