@@ -12,7 +12,7 @@ import './components/inputs/input.css'
 import './components/notify'
 import './components/progress_bar'
 import './components/dialogs'
-
+import './components/inventory'
 
 
 import { io } from "socket.io-client";

@@ -1,0 +1,94 @@
+#inv {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+
+    width: 450px;
+
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background: radial-gradient(80.61% 70.81% at 50% 50%, rgba(114, 57, 187, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(61deg, rgba(0, 0, 0, 0.98) -0.05%, rgba(47, 47, 47, 0.98) 100.05%);
+}
+
+#inv-header {
+    display: flex;
+    justify-content: space-between;
+    font-family: Oswald, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    color: #FFF;
+}
+
+#inv-header--name, #inv-header--info, #inv-busyWeight, #inv-maxWeight, #inv-deleteText, #inv-weight--icon, #inv-deleteIcon{
+    text-transform: uppercase;
+    user-select: none;
+}
+
+#inv-header--name {
+    font-size: 18px;
+    line-height: 130%; /* 23.4px */
+}
+
+#inv-header--info {
+    font-size: 16px;
+    line-height: 120%; /* 19.2px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#inv-weightIcon {
+    margin-right: 2px;
+    width: 20px;
+    height: 20px;
+}
+
+#inv-busyWeight {
+    margin-right: 2px;
+}
+
+#inv-maxWeight {
+    margin-left: 2px;
+}
+
+#inv-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+#inv-item {
+    width: 96px;
+    height: 96px;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1.5px solid  rgba(255, 255, 255, 0.10);
+}
+
+#inv-deleteArea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 0;
+    border-radius: 10px;
+    border: 2px dashed rgba(255, 255, 255, 0.10);
+}
+
+#inv-deleteIcon {
+    margin-right: 10px;
+    width: 24px;
+    height: 24px;
+}
+
+#inv-deleteText {
+    color: #FFF;
+
+    font-family: Oswald,sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 130%; /* 18.2px */
+
+    opacity: 0.3;
+}
