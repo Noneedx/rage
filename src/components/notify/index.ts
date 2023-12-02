@@ -62,7 +62,7 @@ export function createNotify(type:number,text = 'Уведомление',time = 
         notifyQueue.pop()
         notifyCounter-=1
     }
-    notify.deleteTimeout = setTimeout(deleteNotify, 1000 * time)
+    notify.deleteTimeout = setTimeout(deleteNotify, 1000 * time) as number
     notify.activateTimeout = setTimeout(() => {
         activateProgressBar(activatedProgressBar, time)
     }, 50)

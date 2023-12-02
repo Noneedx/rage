@@ -58,7 +58,8 @@
     gap: 8px;
 }
 
-#inv-item {
+.inv-item {
+    text-align: center;
     width: 96px;
     height: 96px;
     background-color: transparent;
@@ -76,12 +77,14 @@
 }
 
 #inv-deleteIcon {
+    pointer-events: none;
     margin-right: 10px;
     width: 24px;
     height: 24px;
 }
 
 #inv-deleteText {
+    pointer-events: none;
     color: #FFF;
 
     font-family: Oswald,sans-serif;
@@ -91,4 +94,8 @@
     line-height: 130%; /* 18.2px */
 
     opacity: 0.3;
+}
+
+.inv-item.dragging {
+    border: 1.5px solid  rgba(255, 255, 255);
 }

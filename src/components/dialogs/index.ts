@@ -152,8 +152,8 @@ function createDialog (data:IDialogData) {
 
         dialogText[0].setAttribute('style',`width:${dialogTableWidth}px`)
 
-        let firstTableTd = document.querySelector("#dialog-tbody tr:first-child td:first-child")
-        let lastTableTd = document.querySelector("#dialog-tbody tr:first-child td:last-child")
+        let firstTableTd = document.querySelector("#dialog-tbody tr:first-child td:first-child") as HTMLElement
+        let lastTableTd = document.querySelector("#dialog-tbody tr:first-child td:last-child") as HTMLElement
 
         firstTableTd.classList.add('dialog-first-tableTd')
         lastTableTd.classList.add('dialog-second-tableTd')

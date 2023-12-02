@@ -52,7 +52,7 @@ let createAccButton:HTMLElement | undefined
 
 let userHaveAccBtn:HTMLElement | undefined
 
-let genderStatus:boolean | undefined = null
+let genderStatus:boolean | undefined | null = null
 
 let sexValue: boolean;
 
@@ -131,23 +131,29 @@ function showLoginPage(remember:boolean) {
     authButton.classList.add('login-button', 'primary-button', 'btn')
 
     function onClickAuthButton() {
-        let authUserLogin = authLoginInput.value
-        let authUserPassword = authPasswordInput.value
+        let authUserLogin:string = authLoginInput ? authLoginInput.value : ''
+        let authUserPassword:string = authPasswordInput ? authPasswordInput.value : ''
         if (!authUserLogin) {
             createNotify(2, 'Заполните логин',5)
-            registrationInputLogin.value = ''
+            if ("value" in registrationInputLogin) {
+                registrationInputLogin.value = ''
+            }
             return
         }
         if (!authUserPassword) {
             createNotify(2, 'Заполните пароль',5)
-            registrationPasswordInput.value = ''
+            if ("value" in registrationPasswordInput) {
+                registrationPasswordInput.value = ''
+            }
             return
         }
-        window.mp.trigger('auth::input',JSON.stringify({
-            login: authUserLogin,
-            password: authUserPassword,
-            remember: passwordCheckbox.checked,
-        }))
+        if ("checked" in passwordCheckbox) {
+            window.mp.trigger('auth::input', JSON.stringify({
+                login: authUserLogin,
+                password: authUserPassword,
+                remember: passwordCheckbox.checked,
+            }))
+        }
     }
 
     authButton.addEventListener('click', onClickAuthButton)
@@ -159,7 +165,7 @@ function showLoginPage(remember:boolean) {
     // функция показать/скрыть пароль
 
     authPasswordShow.addEventListener('click', () => {
-        onClickPasswordShow(authPasswordInput)
+        onClickPasswordShow(authPasswordInput as HTMLInputElement)
     })
 
     // ОКНО РЕГИСТРАЦИИ !!!!!!!!!!!!!!!!!!!!!!!!!
@@ -188,7 +194,7 @@ function showLoginPage(remember:boolean) {
     confirmRegistrationPasswordArea.classList.add('registration-password-area')
 
     regPassIcon.addEventListener('click', () => {
-        onClickPasswordShow(registrationPasswordInput)
+        onClickPasswordShow(registrationPasswordInput as HTMLInputElement)
     })
 
     confirmRegistrationPasswordInput = document.createElement('input');
@@ -199,7 +205,7 @@ function showLoginPage(remember:boolean) {
     confirmRegistrationPasswordArea.append(confirmRegistrationPasswordInput, regPassConfirmIcon)
 
     regPassConfirmIcon.addEventListener('click', () => {
-        onClickPasswordShow(confirmRegistrationPasswordInput)
+        onClickPasswordShow(confirmRegistrationPasswordInput as HTMLInputElement)
     })
 
     regMailInput = document.createElement('input')
@@ -219,8 +225,12 @@ function showLoginPage(remember:boolean) {
     maleGenderIcon.classList.add('male-gender-item-icon', 'gender-item-icon')
 
     maleGenderItem.addEventListener('click', () => {
-        maleGenderItem.classList.add('gender-active')
-        femaleGenderItem.classList.remove('gender-active')
+        if ("classList" in maleGenderItem) {
+            maleGenderItem.classList.add('gender-active')
+        }
+        if ("classList" in femaleGenderItem) {
+            femaleGenderItem.classList.remove('gender-active')
+        }
         // maleGenderItem.classList.remove('gender-item')
         genderStatus = true;
         sexValue = true
@@ -237,8 +247,12 @@ function showLoginPage(remember:boolean) {
     femaleGenderIcon.classList.add('female-gender-item-icon', 'gender-item-icon')
 
     femaleGenderItem.addEventListener('click', () => {
-        femaleGenderItem.classList.add('gender-active')
-        maleGenderItem.classList.remove('gender-active')
+        if ("classList" in femaleGenderItem) {
+            femaleGenderItem.classList.add('gender-active')
+        }
+        if ("classList" in maleGenderItem) {
+            maleGenderItem.classList.remove('gender-active')
+        }
         // maleGenderItem.classList.remove('gender-item')
         genderStatus = true;
         sexValue = false
@@ -275,18 +289,22 @@ function showLoginPage(remember:boolean) {
 
     const emailRegex = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
     function onClickCreateAccButton() {
-        let RegUserLogin = registrationInputLogin.value
-        let RegUserPassword = registrationPasswordInput.value
-        let RegConfirmUserPassword = confirmRegistrationPasswordInput.value
-        let RegEmail = regMailInput.value
+        let RegUserLogin = registrationInputLogin ? registrationInputLogin.value : ''
+        let RegUserPassword = registrationPasswordInput ? registrationPasswordInput.value : ''
+        let RegConfirmUserPassword = confirmRegistrationPasswordInput ? confirmRegistrationPasswordInput.value : ''
+        let RegEmail = regMailInput ? regMailInput.value : ''
         if (!RegUserLogin || loginRegex.test(RegUserLogin) === false) {
             createNotify(2, 'Заполните корректно логин',5)
-            registrationInputLogin.value = ''
+            if ("value" in registrationInputLogin) {
+                registrationInputLogin.value = ''
+            }
             return
         }
         if (!RegUserPassword || passwordRegex.test(RegUserPassword) === false) {
             createNotify(2, 'Заполните корректно пароль',5)
-            registrationPasswordInput.value = ''
+            if ("value" in registrationPasswordInput) {
+                registrationPasswordInput.value = ''
+            }
             return
         }
         if (RegUserPassword != RegConfirmUserPassword) {
@@ -313,61 +331,150 @@ function showLoginPage(remember:boolean) {
 }
 
 function onClickRegistrationButton() {
-    authTitle.classList.add('hidden')
-    authLoginInput.classList.add('hidden')
-    authPasswordArea.classList.add('hidden')
-    passwordCheckboxArea.classList.add('hidden')
+    if ("classList" in authTitle) {
+        authTitle.classList.add('hidden')
+    }
+    if ("classList" in authLoginInput) {
+        authLoginInput.classList.add('hidden')
+    }
+    if ("classList" in authPasswordArea) {
+        authPasswordArea.classList.add('hidden')
+    }
+    if ("classList" in passwordCheckboxArea) {
+        passwordCheckboxArea.classList.add('hidden')
+    }
     registrationButton.classList.add('hidden')
-    authButton.classList.add('hidden')
-    logo.classList.remove('logo-auth')
-    logo.classList.add('logo-reg')
+    if ("classList" in authButton) {
+        authButton.classList.add('hidden')
+    }
+    if ("classList" in logo) {
+        logo.classList.remove('logo-auth')
+    }
+    if ("classList" in logo) {
+        logo.classList.add('logo-reg')
+    }
 
-    registrationTitle.classList.remove('hidden')
-    registrationInputLogin.classList.remove('hidden')
-    registrationPasswordArea.classList.remove('hidden')
-    confirmRegistrationPasswordArea.classList.remove('hidden')
-    regMailInput.classList.remove('hidden')
-    regGenderSwitcher.classList.remove('hidden')
-    regGenderSwitcher.style.display = 'flex'
-    createAccButton.classList.remove('hidden')
-    userHaveAccBtn.classList.remove('hidden')
+    if ("classList" in registrationTitle) {
+        registrationTitle.classList.remove('hidden')
+    }
+    if ("classList" in registrationInputLogin) {
+        registrationInputLogin.classList.remove('hidden')
+    }
+    if ("classList" in registrationPasswordArea) {
+        registrationPasswordArea.classList.remove('hidden')
+    }
+    if ("classList" in confirmRegistrationPasswordArea) {
+        confirmRegistrationPasswordArea.classList.remove('hidden')
+    }
+    if ("classList" in regMailInput) {
+        regMailInput.classList.remove('hidden')
+    }
+    if ("classList" in regGenderSwitcher) {
+        regGenderSwitcher.classList.remove('hidden')
+    }
+    if ("style" in regGenderSwitcher) {
+        regGenderSwitcher.style.display = 'flex'
+    }
+    if ("classList" in createAccButton) {
+        createAccButton.classList.remove('hidden')
+    }
+    if ("classList" in userHaveAccBtn) {
+        userHaveAccBtn.classList.remove('hidden')
+    }
 
-    pageWrapper.append(registrationTitle)
-    pageWrapper.append(registrationInputLogin)
-    pageWrapper.append(registrationPasswordArea)
-    pageWrapper.append(confirmRegistrationPasswordArea)
-    pageWrapper.append(regMailInput)
-    pageWrapper.append(regGenderSwitcher)
-    pageWrapper.append(createAccButton)
-    pageWrapper.append(userHaveAccBtn)
+
+    if ("append" in pageWrapper) {
+        pageWrapper.append(registrationTitle as HTMLElement)
+    }
+    if ("append" in pageWrapper) {
+        pageWrapper.append(registrationInputLogin as HTMLElement)
+    }
+    if ("append" in pageWrapper) {
+        pageWrapper.append(registrationPasswordArea as HTMLElement)
+    }
+    if ("append" in pageWrapper) {
+        pageWrapper.append(confirmRegistrationPasswordArea as HTMLElement)
+    }
+    if ("append" in pageWrapper) {
+        pageWrapper.append(regMailInput as HTMLInputElement)
+    }
+    if ("append" in pageWrapper) {
+        pageWrapper.append(regGenderSwitcher as HTMLElement)
+    }
+    if ("append" in pageWrapper) {
+        pageWrapper.append(createAccButton as HTMLElement)
+    }
+    if ("append" in pageWrapper) {
+        pageWrapper.append(userHaveAccBtn as HTMLElement)
+    }
 }
 
 function onClickUserHaveAccBtn() {
-    registrationTitle.classList.add('hidden')
-    registrationInputLogin.classList.add('hidden')
-    registrationPasswordArea.classList.add('hidden')
-    confirmRegistrationPasswordArea.classList.add('hidden')
-    regMailInput.classList.add('hidden')
-    regGenderSwitcher.classList.add('hidden')
-    regGenderSwitcher.style.display = 'none'
-    createAccButton.classList.add('hidden')
-    userHaveAccBtn.classList.add('hidden')
+    // if ("classList" in registrationTitle) {
+    if(registrationTitle == undefined) {
+        return
+    }
+        registrationTitle.classList.add('hidden')
+    // }
+    // if ("classList" in registrationInputLogin) {
+        registrationInputLogin.classList.add('hidden')
+    // }
+    if ("classList" in registrationPasswordArea) {
+        registrationPasswordArea.classList.add('hidden')
+    }
+    if ("classList" in confirmRegistrationPasswordArea) {
+        confirmRegistrationPasswordArea.classList.add('hidden')
+    }
+    if ("classList" in regMailInput) {
+        regMailInput.classList.add('hidden')
+    }
+    if ("classList" in regGenderSwitcher) {
+        regGenderSwitcher.classList.add('hidden')
+    }
+    if ("style" in regGenderSwitcher) {
+        regGenderSwitcher.style.display = 'none'
+    }
+    if ("classList" in createAccButton) {
+        createAccButton.classList.add('hidden')
+    }
+    if ("classList" in userHaveAccBtn) {
+        userHaveAccBtn.classList.add('hidden')
+    }
 
-    authTitle.classList.remove('hidden')
-    authLoginInput.classList.remove('hidden')
-    authPasswordArea.classList.remove('hidden')
-    passwordCheckboxArea.classList.remove('hidden')
+    if ("classList" in authTitle) {
+        authTitle.classList.remove('hidden')
+    }
+    if ("classList" in authLoginInput) {
+        authLoginInput.classList.remove('hidden')
+    }
+    if ("classList" in authPasswordArea) {
+        authPasswordArea.classList.remove('hidden')
+    }
+    if ("classList" in passwordCheckboxArea) {
+        passwordCheckboxArea.classList.remove('hidden')
+    }
     registrationButton.classList.remove('hidden')
-    authButton.classList.remove('hidden')
-    logo.classList.add('logo-auth')
-    logo.classList.remove('logo-reg')
-    userHaveAccBtn.remove()
+    if ("classList" in authButton) {
+        authButton.classList.remove('hidden')
+    }
+    if ("classList" in logo) {
+        logo.classList.add('logo-auth')
+    }
+
+    if ("classList" in logo) {
+        logo.classList?.remove('logo-reg')
+    }
+
+
+        userHaveAccBtn?.remove()
+
 }
 
 window.showLoginPage = window.showLoginPage || {}
 
 function closeLoginPage() {
-    pageWrapper.remove()
+    pageWrapper?.remove()
+
     registrationButton.removeEventListener('click', onClickRegistrationButton)
 }
 
